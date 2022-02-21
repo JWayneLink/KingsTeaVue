@@ -1,0 +1,19 @@
+{
+    "title": "This is English Message",
+    "NavBar":{
+        "Home":"Home",
+        "Product":"Product",
+        "Customer":"Customer",
+        "SalesOrder":"SalesOrder",
+        "Account":
+        {
+            "title":"Account",
+            "actions":["Create Account","Login","Setting"]
+        },
+        "Lang":
+            {
+                "title":"Lang",
+                "langs":["EN","ZH","JA"]
+            }
+    }
+}

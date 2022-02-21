@@ -1,0 +1,19 @@
+{
+    "title": "This is Chinese Message",
+    "NavBar":{
+      "Home":"首頁",
+      "Product":"產品",
+      "Customer":"客戶",
+      "SalesOrder":"訂單",
+      "Account":
+      {
+          "title":"帳戶",
+          "actions":["新增帳戶","登入","設定"]
+      },
+      "Lang":
+        {
+            "title":"語言",
+            "langs":["英文","中文","日文"]
+        }
+  }    
+}

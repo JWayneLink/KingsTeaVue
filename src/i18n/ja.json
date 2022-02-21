@@ -1,0 +1,19 @@
+{
+    "title": "This is Japanese Message",
+    "NavBar":{
+        "Home":"ホーム",
+        "Product":"プロダクト",
+        "Customer":"クライアント",
+        "SalesOrder":"販売注文",
+        "Account":
+        {
+            "title":"アカウント",
+            "actions":["新しいアカウント","ログインアカウント","セットアップ"]
+        },
+        "Lang":
+            {
+                "title":"言語",
+                "langs":["EN","ZH","JA"]
+            }
+    }
+}

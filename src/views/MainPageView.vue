@@ -9,7 +9,10 @@
     export default {
         name: '',
         beforeCreate(){
-            
+            debugger;
+             window.setTimeout(( () => {
+                 //alert(123);
+             } ), 500);
         },
         created () {
         },
@@ -17,7 +20,8 @@
    
         },
         methods:{
-            
+
+
         }
 
     }

@@ -5,7 +5,7 @@ import axios from 'axios';
 import router from '@/router';
 
 const api = axios.create({
-  // 'baseURL': process.env.VUE_APP_KTA_API,
+  //'baseURL': process.env.VUE_APP_KTA_API,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"

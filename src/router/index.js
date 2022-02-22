@@ -25,9 +25,14 @@ const routes = [{
     component: () => import('../views/MainPageView.vue')
   },
   {
-    path: "/product",
-    name: "Product",
-    component: () => import('../views/Product/Product.vue')
+    path: "/product/new",
+    name: "New Product",
+    component: () => import('../views/Product/NewProductValid.vue')
+  },
+  {
+    path: "/product/query",
+    name: "Query Product",
+    component: () => import('../views/Product/QueryProduct.vue')
   },
   {
     path: "/customer",

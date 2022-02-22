@@ -6,18 +6,32 @@
     },
     "NavBar":{
         "Home":"Home",
-        "Product":"Product",
+        "Product":{
+            "title": "Product",
+            "actions":["New Product","Query Product"]
+        },
         "Customer":"Customer",
         "SalesOrder":"SalesOrder",
         "Account":
         {
             "title":"Account",
-            "actions":["Create Account","Login","Logout"]
+            "actions":["New Account","Sign Out"]
         },
         "Lang":
             {
                 "title":"Lang",
                 "langs":["EN","ZH","JA"]
             }
+    },
+    "AccountPage":{
+        "LoginTitle":"Kings Tea Shop Sign In"
+    },
+    "ProductPage":{
+        "NewProduct": {
+            "title": "New Kings Tea Product"
+        },
+        "QueryProduct": {
+            "title": "Query Kings Tea Product"
+        }
     }
 }

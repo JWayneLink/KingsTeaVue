@@ -56,15 +56,16 @@
                                 label="Phone Number" required></v-text-field>
                         </validation-provider>
 
-                        <v-btn class="mr-4" type="submit" :disabled="invalid">
-                            Sign Up
-                        </v-btn>
-                        <v-btn @click="clear" style="float:right;">
+                        <v-btn @click="clear">
                             Clear
                         </v-btn>
+                        <v-btn class="mr-4" style="float:right;" type="submit" :disabled="invalid" >
+                            Sign Up
+                        </v-btn>
+
                         <p class="forgot-password text-right">
                             Already registered 
-                            <router-link :to="{name: 'Login'}">sign in?</router-link>
+                            <router-link :to="{name: 'Login Account'}">sign in?</router-link>
                         </p>
                     </form>
                 </validation-observer>
@@ -132,7 +133,7 @@
                 this.$refs.observer.validate();
 
                 //POST請求            
-                axios.post(`https://localhost:44356/v1/api/AppAccount/AddAccountAsync`,{
+                axios.post(`${process.env.VUE_APP_KTA_ACCOUNT}AddAccountAsync`,{
                     account: this.account,
                     name: this.fullname,
                     pwd: this.password,

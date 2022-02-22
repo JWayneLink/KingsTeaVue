@@ -25,7 +25,7 @@
             </b-alert>
             
             <!-- Login -->
-            <h3 style="font-style: italic;">Kings Tea Shop Sign In</h3>
+            <h3 style="font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
             <div class="form-group">
                 <label>Account</label>
                 <input v-model="account" type="text" class="form-control form-control-lg" />
@@ -60,10 +60,6 @@
                 responseMsg : ''               
             }
         },
-        // components:
-        // {
-        //     SignupNavBar
-        // },
         methods: {
             login() {
                 // Authenticate against API
@@ -80,7 +76,7 @@
                 else
                 {
                     //POST Login請求            
-                    axios.post(`https://localhost:44356/v1/api/AppAccount/AccountLoginAsync`,{
+                    axios.post(`${process.env.VUE_APP_KTA_ACCOUNT}AccountLoginAsync`,{
                         account: this.account,
                         pwd: this.password,
                     })
@@ -93,14 +89,8 @@
                             // this.$localStorage.set('access_token', response.data.isSuccess);
                             localStorage.setItem('access_token', 'true');                
                             //this.$bus.$emit('logged', 'User logged');
-                            this.$router.push(`/mainpage`);
-                            //this.$forceUpdate();
-                            //window.location.reload();
-                            // let token = localStorage.getItem('access_token')
-                            // alert('after login ' + token); //true
-                            
+                            this.$router.push(`/mainpage`);                         
                             // this.$forceUpdate();
-                            // vm.$forceUpdate();
                             //window.location.reload();
                             
                         }
@@ -116,10 +106,7 @@
                             console.log(error.response.headers)
                         }
                     });
-                }
-
-                
-
+                }            
             },            
             countDownChangedOK(dismissCountDownOK) {
                 this.dismissCountDownOK = dismissCountDownOK

@@ -5,9 +5,21 @@
                 <b-nav-item>
                     <router-link to="/"> {{ $t('NavBar.Home') }} </router-link>
                 </b-nav-item>
-                <b-nav-item>
+
+                <!-- Navbar dropdowns -->
+                <!-- Product -->
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Product.title')" right>
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/product/new">{{$t('NavBar.Product.actions[0]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="#">
+                         <router-link style="color:black;" to="/product/query">{{$t('NavBar.Product.actions[1]')}}</router-link>
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
+                <!-- <b-nav-item>
                     <router-link to="/product"> {{ $t('NavBar.Product') }} </router-link>
-                </b-nav-item>
+                </b-nav-item> -->
                 <b-nav-item>
                     <router-link to="/customer"> {{ $t('NavBar.Customer') }} </router-link>
                 </b-nav-item>
@@ -21,11 +33,8 @@
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/account/new">{{$t('NavBar.Account.actions[0]')}}</router-link>
                     </b-dropdown-item>
-                    <b-dropdown-item href="#">
-                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[1]')}}</router-link>
-                    </b-dropdown-item>
                     <b-dropdown-item href="#" @click="logout">
-                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[2]')}}</router-link>
+                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[1]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
 
@@ -70,7 +79,7 @@
         },
         methods: {
             logout(){
-
+                // remove access_token from localStorage
                 localStorage.removeItem('access_token');
                 this.$router.push(`/account/login`);
                 this.$forceUpdate();

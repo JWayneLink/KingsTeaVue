@@ -1,13 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'Home',
-    component: Home
+  path: "/",
+  name: "Login",
+  component: () => import('../views/Account/LoginAccount.vue')
+  },
+  {
+    path: "/account/login",
+    name: "Login Account",
+    component: () => import('../views/Account/LoginAccount.vue')
+  },
+  {
+    path: "/account/new",
+    name: "New Account",
+    component: () => import('../views/Account/NewAccountValid.vue')
+  },
+  {
+    path: "/mainpage",
+    name: "MainPageView",
+    component: () => import('../views/MainPageView.vue')
   },
   {
     path: "/product",
@@ -23,16 +38,6 @@ const routes = [{
     path: "/salesorder",
     name: "SalesOrder",
     component: () => import('../views/SalesOrder/SalesOrder.vue')
-  },
-  {
-    path: "/account/new",
-    name: "New Account",
-    component: () => import('../views/Account/NewAccountValid.vue')
-  },
-  {
-    path: "/account/login",
-    name: "Login",
-    component: () => import('../views/Account/LoginAccount.vue')
   },
   {
     path: '/user/:userId',

@@ -1,6 +1,6 @@
 <template>
     <div id="app1">
-        <b-navbar type="dark" variant="info" >
+        <b-navbar type="dark" variant="secondary " >
             <b-navbar-nav>
                 <b-nav-item>
                     <router-link to="/"> {{ $t('NavBar.Home') }} </router-link>
@@ -23,6 +23,9 @@
                     </b-dropdown-item>
                     <b-dropdown-item href="#">
                          <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[1]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="#" @click="logout">
+                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[2]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
 
@@ -66,10 +69,14 @@
 
         },
         methods: {
+            logout(){
+
+                localStorage.removeItem('access_token');
+                this.$router.push(`/account/login`);
+                this.$forceUpdate();
+            },
             changelanguage: function (event) {
                 let lang = event.target.getAttribute('data-lang');
-
-                debugger;
                 lang = lang.toLowerCase();
                 switch (lang) {
                     case '英文':

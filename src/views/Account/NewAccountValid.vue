@@ -50,9 +50,9 @@
 
                         <validation-provider v-slot="{ errors }" name="Phone Number" :rules="{
                             required: true,
-                            digits: 7,                            
+                            digits: 10,                            
                             }">
-                            <v-text-field v-model="phonenumber" :counter="7" :error-messages="errors"
+                            <v-text-field v-model="phonenumber" :counter="10" :error-messages="errors"
                                 label="Phone Number" required></v-text-field>
                         </validation-provider>
 
@@ -142,12 +142,10 @@
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
-                        alert('OK');
                         this.responseMsg = response.data.message;
                         this.showAlertOK();
                     }
                     else{
-                        alert('NG');
                         this.responseMsg = response.data.message;
                         this.showAlertNG();
                     }

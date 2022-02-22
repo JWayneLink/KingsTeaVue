@@ -1,5 +1,9 @@
 {
     "title": "This is English Message",
+    "SignupBar":{
+        "SignIn": "Sign in",
+        "SignUn":"Sign up"
+    },
     "NavBar":{
         "Home":"Home",
         "Product":"Product",
@@ -8,7 +12,7 @@
         "Account":
         {
             "title":"Account",
-            "actions":["Create Account","Login","Setting"]
+            "actions":["Create Account","Login","Logout"]
         },
         "Lang":
             {

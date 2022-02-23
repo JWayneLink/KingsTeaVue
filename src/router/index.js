@@ -30,14 +30,14 @@ const routes = [{
     component: () => import('../views/Product/NewProductValid.vue')
   },
   {
-    path: "/product/query",
-    name: "Query Product",
-    component: () => import('../views/Product/QueryProduct.vue')
+    path: "/product/maintenance",
+    name: "Maintenance Product",
+    component: () => import('../views/Product/MaintenanceProduct.vue')
   },
   {
-    path: "/customer",
-    name: "Customer",
-    component: () => import('../views/Customer/Customer.vue')
+    path: "/customer/new",
+    name: "New Customer",
+    component: () => import('../views/Customer/NewCustomerValid.vue')
   },
   {
     path: "/salesorder",

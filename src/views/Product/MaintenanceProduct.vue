@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <b-row>
-            <b-col cols="2"></b-col>
-            <b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('ProductPage.QueryProduct.title')}}</h3></b-col>
+            <b-col cols="2"></b-col>            
+            <b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
             <b-col cols="2"></b-col>
         </b-row>        
         <b-row>
@@ -48,12 +48,14 @@
                  <b-button style="width:32%;"   @click="clearSelected">Clear Selected</b-button>  
             </b-col>
             <b-col cols="1">
-                <b-button :disabled="toggleDisabled" v-on:click.prevent="updateProduct" variant="outline-warning">Update</b-button>                         
+                <b-button  v-on:click.prevent="queryProduct" variant="outline-primary">Query</b-button>                         
+            </b-col>
+            <b-col cols="1">
+                <b-button :disabled="toggleDisabled" v-on:click.prevent="showUpdateModal" variant="outline-warning">Update</b-button>                         
             </b-col>
             <b-col cols="1">
                 <b-button :disabled="toggleDisabled" v-on:click.prevent="deleteProduct" variant="outline-danger">Delete</b-button>                         
-            </b-col>
-            <b-col cols="1"></b-col>
+            </b-col>            
         </b-row> 
         <b-row>
             <b-col cols="2"></b-col>
@@ -75,17 +77,44 @@
         </b-row>  
         
 
-    <b-modal id="modal-center" v-model="modalShow" centered title="Update Product">
 
-        <b-input-group prepend="Pn" class="mb-2">
-            <b-form-input disabled v-model="selectPn" aria-label="Pn" trim></b-form-input>
+<!-- Update Modal Start -->
+<b-modal 
+    id="modal-center" 
+    ref="modal"
+    v-model="modalShow" 
+    centered title="Update Product"    
+    @ok="handleUpdate"
+>
+    <form ref="form" @submit.stop.prevent="handleSubmit">
+        <!-- Disable Edit Product Number -->
+        <b-input-group prepend="Pn" class="mb-2" >
+            <b-form-input disabled v-model="selectPn" aria-label="Pn" trim ></b-form-input>
         </b-input-group>
-            <b-input-group prepend="Name" class="mb-2">
-            <b-form-input v-model="updateName" aria-label="Name" trim></b-form-input>
-        </b-input-group>
-            <b-input-group prepend="Category" class="mb-2">
-            <b-form-input v-model="updateCategory" aria-label="Category" trim></b-form-input>
-        </b-input-group>
+
+        <!-- Name required valid message -->
+        <b-form-group          
+          label-for="name-input"
+          invalid-feedback="Name is required"
+          :state="nameState"
+        >
+            <b-input-group prepend="Name" :state="nameState" class="mb-2">
+                <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
+            </b-input-group>
+        </b-form-group >
+
+        <!-- Category required valid message -->
+        <b-form-group          
+          label-for="category-input"
+          invalid-feedback="Category is required"
+          :state="categoryState"
+        >
+            <b-input-group prepend="Category" :state="categoryState" class="mb-2">
+                <b-form-input id="category-input"  v-model="updateCategory" :state="categoryState" required aria-label="Category" trim></b-form-input>
+            </b-input-group>
+        </b-form-group>
+
+        <!-- Size update -->
             <b-input-group prepend="Size" class="mb-2">
                 <b-form-radio-group
                 id="btn-radios-1"
@@ -96,26 +125,32 @@
             ></b-form-radio-group>                          
         </b-input-group>
 
-            <b-input-group prepend="Sugar" class="mb-2">
+        <!-- Sugar update -->
+        <b-input-group prepend="Sugar" class="mb-2">
                 <b-form-rating v-model="updateSugar" color="#a8a8a8"></b-form-rating>
-            <!-- <b-form-input v-model="updateSugar" aria-label="Sugar" trim></b-form-input> -->
-        </b-input-group>
-            <b-input-group prepend="Ice" class="mb-2">
-                <b-form-input id="iceRange" v-model="updateIce" type="range" min="0" max="5"></b-form-input>            
-        </b-input-group>
-            <b-input-group prepend="Price" class="mb-2">
-            <b-form-input v-model="updatePrice" aria-label="Price" trim></b-form-input>
         </b-input-group>
 
-                    <!-- <b-form-input
-                    id="input-live"
-                    v-model="name"
-                    :state="nameState"
-                    aria-describedby="input-live-help input-live-feedback"
-                    placeholder="Enter your name"
-                    trim
-                    ></b-form-input> -->
-        </b-modal>
+        <!-- Ice update -->
+        <b-input-group prepend="Ice" class="mb-2">
+            <b-form-input id="iceRange" v-model="updateIce" type="range" min="0" max="5"></b-form-input>            
+        </b-input-group>
+
+        <!-- Price required valid message -->
+        <b-form-group          
+          label-for="price-input"
+          invalid-feedback="Price is required"
+          :state="priceState"
+        >
+            <b-input-group prepend="Price" :state="priceState" class="mb-2">
+                <b-form-input id="price-input" v-model="updatePrice" :state="priceState" required aria-label="Price" trim></b-form-input>
+            </b-input-group>
+        </b-form-group>
+
+    </form>                
+</b-modal>
+        <!-- Update Modal End -->
+
+
     </div>
 </template>
 
@@ -141,7 +176,10 @@ export default {
                     { key: 'udt' },
                     { key: 'cdt' }
                 ],
-                items: [],                
+                items: [],
+                nameState: null, // null or false is invalid, true is valid
+                categoryState: null, // null or false is invalid, true is valid 
+                priceState: null, // null or false is invalide, true is valid
                 updateName:'',
                 updateCategory:'',
                 updateSize:'',
@@ -167,12 +205,13 @@ export default {
     components:{
 
     },
-    mounted: function() {
-        
+    mounted: function() {        
         this.queryAllProduct();
     },
     methods:{
         async queryAllProduct(){
+
+            // QUERY ALL
             this.items = [];
             let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetAllProductsAsync`);
             results.data.data.forEach((element) => {
@@ -197,7 +236,8 @@ export default {
                 this.showAlertNG();
             }
             else
-            {                         
+            {               
+                // QUERY SINGLE          
                 let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetSingleProductAsync?pn=${this.queryPn}`);
                 this.items = [];
                 if(results.data.isSuccess && results.data.data[0] != null)
@@ -224,8 +264,30 @@ export default {
                 }
             }
         },
-        async updateProduct(){
-            this.modalShow = true;
+        updateProduct(){
+            // PUT UPDATE          
+            axios.put(`${process.env.VUE_APP_KTA_PRODUCT}UpdateProductAsync`,{
+                pn: this.selectPn,
+                name: this.updateName,
+                category: this.updateCategory,
+                size: this.updateSize,
+                sugar: this.updateSugar.toString(),
+                ice: this.updateIce.toString(),
+                price: this.updatePrice,
+            })
+            .then( (response) => {
+                if(response.data.isSuccess)
+                {
+                    this.responseMsg = response.data.message;
+                    this.showAlertOK();
+                    this.queryAllProduct();
+                }
+                else{
+                    this.responseMsg = response.data.message;
+                    this.showAlertNG();
+                }
+            })
+            .catch( (error) => alert(error));  
         },
         deleteProduct(){
 
@@ -247,6 +309,77 @@ export default {
                 })
                 .catch( (error) => alert(error));   
             }               
+        },
+        queryProduct(){
+            this.queryAllProduct();
+        },
+        handleUpdate (bvModalEvt){
+            
+            // Prevent modal from closing
+            bvModalEvt.preventDefault()
+            // Trigger submit handler
+            this.handleSubmit();
+
+            this.updateProduct();              
+        },
+        checkFormValidity() {
+            debugger;
+            const Valid = this.$refs.form.checkValidity()
+            if (this.updateName == '')
+            {
+                this.nameState = Valid;                
+                if(this.updateCategory == '') { this.categoryState = Valid; }
+                else { this.categoryState = true; }
+
+                if(this.updatePrice == 0) { this.priceState = Valid; }
+                else { this.priceState = true;}
+
+                return Valid
+            }
+            else if (this.updateCategory == '')
+            {
+                this.categoryState = Valid;  
+                if(this.updateName == '') { this.nameState = Valid; }
+                else { this.nameState = true; }
+                
+                if(this.updatePrice == 0) { this.priceState = Valid;}
+                else{ this.priceState = true; }
+                
+                return Valid
+            }
+            else if(this.updatePrice == 0)
+            {
+                this.priceState = Valid;
+                if (this.updateName == '') { this.nameState = Valid; }
+                else { this.nameState = true; }
+
+                if(this.updateCategory == '') { this.categoryState = Valid; }
+                else{ this.categoryState = true; }
+
+                return Valid
+            }
+            else
+            {
+                this.nameState = Valid;  
+                this.categoryState = Valid;  
+                this.priceState = Valid;  
+                return Valid
+            }            
+        },
+        handleSubmit() {
+            // Exit when the form isn't valid
+            if (!this.checkFormValidity()) {
+                return
+            }
+            // Push the name to submitted names
+            //this.submittedNames.push(this.name)
+            // Hide the modal manually
+            this.$nextTick(() => {
+            this.$bvModal.hide('modal-prevent-closing')
+            });
+        },
+        showUpdateModal(){
+            this.modalShow = true;
         },
         onRowSelected(items) {
             debugger;            
@@ -274,8 +407,7 @@ export default {
         },
         clearSelected() {
             this.$refs.selectableTable.clearSelected();
-            this.queryPn = '';
-            //this.queryAllProduct();
+            this.queryPn = '';            
         },
         countDownChangedOK(dismissCountDownOK) {
             this.dismissCountDownOK = dismissCountDownOK

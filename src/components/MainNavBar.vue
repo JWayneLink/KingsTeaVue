@@ -7,22 +7,31 @@
                 </b-nav-item>
 
                 <!-- Navbar dropdowns -->
-                <!-- Product -->
+                <!-- Product Nav -->
                 <b-nav-item-dropdown v-bind:text="$t('NavBar.Product.title')" right>
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/product/new">{{$t('NavBar.Product.actions[0]')}}</router-link>
                     </b-dropdown-item>
                     <b-dropdown-item href="#">
-                         <router-link style="color:black;" to="/product/query">{{$t('NavBar.Product.actions[1]')}}</router-link>
+                         <router-link style="color:black;" to="/product/maintenance">{{$t('NavBar.Product.actions[1]')}}</router-link>
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
+                <!-- Customer Nav -->
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Customer.title')" right>
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/customer/new">{{ $t('NavBar.Customer.actions[0]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="#">
+                         <router-link style="color:black;" to="/customer/maintenance">{{ $t('NavBar.Customer.actions[1]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
 
                 <!-- <b-nav-item>
-                    <router-link to="/product"> {{ $t('NavBar.Product') }} </router-link>
-                </b-nav-item> -->
-                <b-nav-item>
                     <router-link to="/customer"> {{ $t('NavBar.Customer') }} </router-link>
-                </b-nav-item>
+                </b-nav-item> -->
+
+
                 <b-nav-item>
                     <router-link to="/salesorder"> {{ $t('NavBar.SalesOrder') }} </router-link>
                 </b-nav-item>

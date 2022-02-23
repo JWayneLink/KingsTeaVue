@@ -8,7 +8,7 @@
         "Home":"Home",
         "Product":{
             "title": "Product",
-            "actions":["New Product","Query Product"]
+            "actions":["New Product","Maintenance Product"]
         },
         "Customer":"Customer",
         "SalesOrder":"SalesOrder",
@@ -30,8 +30,8 @@
         "NewProduct": {
             "title": "New Kings Tea Product"
         },
-        "QueryProduct": {
-            "title": "Query Kings Tea Product"
+        "MaintenanceProduct": {
+            "title": "Kings Tea Product Maintenance"
         }
     }
 }

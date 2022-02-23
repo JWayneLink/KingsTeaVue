@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <b-row>
-            <b-col cols="2"></b-col>            
-            <b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
             <b-col cols="2"></b-col>
-        </b-row>        
+            <b-col cols="8"><b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('')}}</h3></b-col></b-col>
+            <b-col cols="2"></b-col>
+        </b-row>
         <b-row>
             <b-col cols="2"></b-col>
             <b-col cols="8">
@@ -30,32 +30,32 @@
                     {{ responseMsg }}
                     </b-alert>
 
-                <!-- Product Query -->
-                <b-input-group prepend="Product" class="mt-3">
-                    <b-form-input v-model="queryPn"></b-form-input>
+                <!-- Customer Query -->
+                <b-input-group prepend="Customer Code" class="mt-3">
+                    <b-form-input v-model="queryCustCode"></b-form-input>
                     <b-input-group-append>
-                    <b-button @click="querySingleProduct" variant="outline-success">Query</b-button>
+                    <b-button @click="querySingleCustomer" variant="outline-success">Query</b-button>
                     </b-input-group-append>
                 </b-input-group>
             </b-col>
             <b-col cols="2"></b-col>
-        </b-row>     
-        <hr>   
+        </b-row>
+        <hr>
 
         <!-- Action Buttons -->
         <b-row cols="2">
             <b-col cols="2"></b-col>
             <b-col cols="5">
-                 <b-button style="width:32%;"   @click="clearSelected">Clear Selected</b-button>  
+                 <b-button style="width:32%;" @click="clearSelected">Clear Selected</b-button>  
             </b-col>
             <b-col cols="1">
-                <b-button  v-on:click.prevent="queryProduct" variant="outline-primary">Query</b-button>                         
+                <b-button  v-on:click.prevent="queryCustomer" variant="outline-primary">Query</b-button>                         
             </b-col>
             <b-col cols="1">
                 <b-button :disabled="toggleDisabled" v-on:click.prevent="showUpdateModal" variant="outline-warning">Update</b-button>                         
             </b-col>
             <b-col cols="1">
-                <b-button :disabled="toggleDisabled" v-on:click.prevent="deleteProduct" variant="outline-danger">Delete</b-button>                         
+                <b-button :disabled="toggleDisabled" v-on:click.prevent="deleteCustomer" variant="outline-danger">Delete</b-button>                         
             </b-col>            
         </b-row> 
 
@@ -73,85 +73,72 @@
                 selectable                  
                 ref="selectableTable"      
                 @row-selected="onRowSelected"
-                ></b-table>                
+                ></b-table>            
             </b-col>
             <b-col cols="2"></b-col>
         </b-row>  
-        
-
 
 <!-- Update Modal Start -->
-<b-modal 
+<b-modal
     id="modal-center" 
     ref="modal"
     v-model="modalShow" 
-    centered title="Update Product"    
+    centered title="Update Customer"    
     @ok="handleUpdate"
 >
-    <form ref="form" @submit.stop.prevent="handleSubmit">
-        <!-- Disable Edit Product Number -->
-        <b-input-group prepend="Pn" class="mb-2" >
-            <b-form-input disabled v-model="selectPn" aria-label="Pn" trim ></b-form-input>
+<form ref="form" @submit.stop.prevent="handleSubmit">
+    <!-- Disable Edit Customer Id -->
+    <b-input-group prepend="CustId" class="mb-2" >
+        <b-form-input disabled v-model="selectedCustId" aria-label="Pn" trim ></b-form-input>
+    </b-input-group>
+
+    <!-- Name required valid message -->
+    <b-form-group          
+        label-for="name-input"
+        invalid-feedback="Name is required"
+        :state="nameState"
+    >
+        <b-input-group prepend="Name" :state="nameState" class="mb-2">
+            <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
         </b-input-group>
+    </b-form-group >
 
-        <!-- Name required valid message -->
-        <b-form-group          
-          label-for="name-input"
-          invalid-feedback="Name is required"
-          :state="nameState"
-        >
-            <b-input-group prepend="Name" :state="nameState" class="mb-2">
-                <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
-            </b-input-group>
-        </b-form-group >
-
-        <!-- Category required valid message -->
-        <b-form-group          
-          label-for="category-input"
-          invalid-feedback="Category is required"
-          :state="categoryState"
-        >
-            <b-input-group prepend="Category" :state="categoryState" class="mb-2">
-                <b-form-input id="category-input"  v-model="updateCategory" :state="categoryState" required aria-label="Category" trim></b-form-input>
-            </b-input-group>
-        </b-form-group>
-
-        <!-- Size update -->
-            <b-input-group prepend="Size" class="mb-2">
-                <b-form-radio-group
-                id="btn-radios-1"
-                v-model="updateSize"        
-                :options="sizeOptions"  
-                name="radios-btn-default"
-                buttons
-            ></b-form-radio-group>                          
+    <!-- Title required valid message -->
+    <b-form-group          
+        label-for="title-input"
+        invalid-feedback="Title is required"
+        :state="titleState"
+    >
+        <b-input-group prepend="Title" :state="titleState" class="mb-2">
+            <b-form-input id="title-input"  v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
         </b-input-group>
+    </b-form-group>
 
-        <!-- Sugar update -->
-        <b-input-group prepend="Sugar" class="mb-2">
-                <b-form-rating v-model="updateSugar" color="#a8a8a8"></b-form-rating>
+    <!-- Address required valid message -->
+    <b-form-group          
+        label-for="address-input"
+        invalid-feedback="Address is required"
+        :state="addressState"
+    >
+        <b-input-group prepend="Address" :state="addressState" class="mb-2">
+            <b-form-input id="address-input"  v-model="updateAddress" :state="addressState" required aria-label="Address" trim></b-form-input>
         </b-input-group>
+    </b-form-group>
 
-        <!-- Ice update -->
-        <b-input-group prepend="Ice" class="mb-2">
-            <b-form-input id="iceRange" v-model="updateIce" type="range" min="0" max="5"></b-form-input>            
+    <!-- Phone required valid message -->
+    <b-form-group          
+        label-for="phone-input"
+        invalid-feedback="Phone is required"
+        :state="phoneState"
+    >
+        <b-input-group prepend="Phone" :state="phoneState" class="mb-2">
+            <b-form-input id="phone-input"  v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
         </b-input-group>
+    </b-form-group>
 
-        <!-- Price required valid message -->
-        <b-form-group          
-          label-for="price-input"
-          invalid-feedback="Price is required"
-          :state="priceState"
-        >
-            <b-input-group prepend="Price" :state="priceState" class="mb-2">
-                <b-form-input id="price-input" v-model="updatePrice" :state="priceState" required aria-label="Price" trim></b-form-input>
-            </b-input-group>
-        </b-form-group>
 
-    </form>                
+</form> 
 </b-modal>
-        <!-- Update Modal End -->
-
 
     </div>
 </template>
@@ -163,96 +150,83 @@ import VueAsios from 'vue-axios'
 Vue.use(VueAsios, axios)
 
 export default {
-    name:'MaintenanceProduct',
-    data() {
-            return {
-                // Note 'isActive' is left out and will not appear in the rendered table
-                fields: [                
-                    { key: 'pn'  },
+    name:'MaintenanceCustomer',
+    data(){
+        return {
+            fields: [                
+                    { key: 'custId'  },
                     { key: 'name' },
-                    { key: 'category' },
-                    { key: 'size' },
-                    { key: 'sugar' },
-                    { key: 'ice' },
-                    { key: 'price', sortable: false },
+                    { key: 'title' },
+                    { key: 'address' },
+                    { key: 'phone' },
                     { key: 'udt' },
                     { key: 'cdt' }
                 ],
                 items: [],
                 nameState: null, // null or false is invalid, true is valid
-                categoryState: null, // null or false is invalid, true is valid 
-                priceState: null, // null or false is invalide, true is valid
+                titleState: null, // null or false is invalid, true is valid 
+                addressState: null, // null or false is invalide, true is valid
+                phoneState: null, // null or false is invalide, true is valid
                 updateName:'',
-                updateCategory:'',
-                updateSize:'',
-                updateSugar:'',
-                updateIce:'',
-                updatePrice:0,
-                selectPn: '',
-                sizeOptions: [
-                    { text: '   L   ', value: 'L' },
-                    { text: '   M  ', value: 'M' },                    
-                    { text: '   S  ', value: 'S' }
-                ]  ,
+                updateTitle:'',
+                updateAddress:'',
+                updatePhone:'',
                 toggleDisabled: true,
                 modalShow: false,
                 selectMode: 'single',
-                queryPn:'',
+                selectedCustId : '',
+                queryCustCode : '',
                 dismissSecs: 3,
                 dismissCountDownOK: 0,
                 dismissCountDownNG: 0,
-                responseMsg : '',                 
-            }
-        },
+                responseMsg : '',      
+        }
+    },
     components:{
 
     },
-    mounted: function() {        
-        this.queryAllProduct();
+    mounted: function(){
+        this.queryAllCustomer();
     },
     methods:{
-        async queryAllProduct(){
-
-            // QUERY ALL PRODUCT
+        async queryAllCustomer(){
+            // QUERY ALL CUSTOMER
             this.items = [];
-            let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetAllProductsAsync`);
+            let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetAllCustomersAsync`);
+            debugger;
             results.data.data.forEach((element) => {
                 let itemObj = {};
-                itemObj.pn = element.pn;
+                itemObj.custId = element.custId;
                 itemObj.name = element.name;
-                itemObj.category = element.category;
-                itemObj.size = element.size;
-                itemObj.sugar = element.sugar;
-                itemObj.ice = element.ice;
-                itemObj.price = element.price;
+                itemObj.title = element.title;
+                itemObj.address = element.address;
+                itemObj.phone = element.phone;
                 itemObj.udt = new Date(element.udt).toLocaleString();
                 itemObj.cdt = new Date(element.cdt).toLocaleString();
                 this.items.push(itemObj);
             });
         },
-        async querySingleProduct(){
+        async querySingleCustomer(){
 
-            if(this.queryPn == '')
+            if(this.queryCustCode == '')
             {
-                this.responseMsg = 'Please input query Product Number';
+                this.responseMsg = 'Please input query Customer Code';
                 this.showAlertNG();
             }
             else
             {               
                 // QUERY SINGLE          
-                let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetSingleProductAsync?pn=${this.queryPn}`);
+                let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetSingleCustomerAsync?custId=${this.queryCustCode}`);
                 this.items = [];
                 if(results.data.isSuccess && results.data.data[0] != null)
                 {
                     results.data.data.forEach((element) => {
                         let itemObj = {};
-                        itemObj.pn = element.pn;
+                        itemObj.custId = element.custId;
                         itemObj.name = element.name;
-                        itemObj.category = element.category;
-                        itemObj.size = element.size;
-                        itemObj.sugar = element.sugar;
-                        itemObj.ice = element.ice;
-                        itemObj.price = element.price;
+                        itemObj.title = element.title;
+                        itemObj.address = element.address;
+                        itemObj.phone = element.phone;
                         itemObj.udt = new Date(element.udt).toLocaleString();
                         itemObj.cdt = new Date(element.cdt).toLocaleString();
                         this.items.push(itemObj);
@@ -266,23 +240,21 @@ export default {
                 }
             }
         },
-        updateProduct(){
+        updateCustomer(){
             // PUT UPDATE          
-            axios.put(`${process.env.VUE_APP_KTA_PRODUCT}UpdateProductAsync`,{
-                pn: this.selectPn,
+            axios.put(`${process.env.VUE_APP_KTA_CUSTOMER}UpdateCustomerAsync`,{
+                custId: this.selectedCustId,
                 name: this.updateName,
-                category: this.updateCategory,
-                size: this.updateSize,
-                sugar: this.updateSugar.toString(),
-                ice: this.updateIce.toString(),
-                price: this.updatePrice,
+                title: this.updateTitle,
+                address: this.updateAddress,
+                phone: this.updatePhone,
             })
             .then( (response) => {
                 if(response.data.isSuccess)
                 {
                     this.responseMsg = response.data.message;
                     this.showAlertOK();
-                    this.queryAllProduct();
+                    this.queryAllCustomer();
                 }
                 else{
                     this.responseMsg = response.data.message;
@@ -291,18 +263,18 @@ export default {
             })
             .catch( (error) => alert(error));  
         },
-        deleteProduct(){
+        deleteCustomer(){
 
-            if(this.selectPn !=  '' && confirm("Do you really want to delete?"))    
-            {
+            if(this.selectedCustId !=  '' && confirm("Do you really want to delete?"))    
+            {                
                 // DELETE
-                axios.delete(`${process.env.VUE_APP_KTA_PRODUCT}DeleteProductAsync?pn=${this.selectPn}`)
+                axios.delete(`${process.env.VUE_APP_KTA_CUSTOMER}DeleteCustomerAsync?custId=${this.selectedCustId}`)
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
                         this.responseMsg = response.data.message;
                         this.showAlertOK();
-                        this.queryAllProduct();
+                        this.queryAllCustomer();
                     }
                     else{
                         this.responseMsg = response.data.message;
@@ -312,8 +284,8 @@ export default {
                 .catch( (error) => alert(error));   
             }               
         },
-        queryProduct(){
-            this.queryAllProduct();
+        queryCustomer(){
+            this.queryAllCustomer();
         },
         handleUpdate (bvModalEvt){
             
@@ -322,7 +294,7 @@ export default {
             // Trigger submit handler
             this.handleSubmit();
 
-            this.updateProduct();              
+            this.updateCustomer();           
         },
         checkFormValidity() {
             debugger;
@@ -330,43 +302,67 @@ export default {
             if (this.updateName == '')
             {
                 this.nameState = Valid;                
-                if(this.updateCategory == '') { this.categoryState = Valid; }
-                else { this.categoryState = true; }
+                if( this.updateTitle == '') { this.titleState = Valid; }
+                else { this.titleState = true; }
 
-                if(this.updatePrice == 0) { this.priceState = Valid; }
-                else { this.priceState = true;}
+                if(this.updateAddress == '') { this.addressState = Valid; }
+                else { this.addressState = true;}
+
+                if(this.updatePhone == '') { this.phoneState = Valid; }
+                else { this.phoneState = true;}
 
                 return Valid
             }
-            else if (this.updateCategory == '')
+            else if (this.updateTitle == '')
             {
-                this.categoryState = Valid;  
+                this.titleState = Valid;  
                 if(this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
                 
-                if(this.updatePrice == 0) { this.priceState = Valid;}
-                else{ this.priceState = true; }
+                if( this.updateAddress == '') { this.addressState = Valid; }
+                else { this.addressState = true;}
+
+                if(this.updatePhone == '') { this.phoneState = Valid; }
+                else { this.phoneState = true;}
                 
                 return Valid
             }
-            else if(this.updatePrice == 0)
+            else if(this.updateAddress == '')
             {
-                this.priceState = Valid;
-                if (this.updateName == '') { this.nameState = Valid; }
+                this.addressState = Valid;
+                if( this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
 
-                if(this.updateCategory == '') { this.categoryState = Valid; }
-                else{ this.categoryState = true; }
+                if( this.updateTitle == '') { this.titleState = Valid; }
+                else { this.titleState = true; }
+
+                if(this.updatePhone == '') { this.phoneState = Valid; }
+                else { this.phoneState = true;}
+
+                return Valid
+            }
+            else if(this.updatePhone == '')
+            {
+                this.phoneState = Valid;
+                if( this.updateName == '') { this.nameState = Valid; }
+                else { this.nameState = true; }
+
+                if( this.updateTitle == '') { this.titleState = Valid; }
+                else { this.titleState = true; }
+
+                if( this.updateAddress == '') { this.addressState = Valid; }
+                else { this.addressState = true;}
 
                 return Valid
             }
             else
             {
                 this.nameState = Valid;  
-                this.categoryState = Valid;  
-                this.priceState = Valid;  
+                this.titleState = Valid;  
+                this.addressState = Valid;  
+                this.phoneState = Valid;
                 return Valid
-            }            
+            }      
         },
         handleSubmit() {
             // Exit when the form isn't valid
@@ -389,13 +385,11 @@ export default {
             // toggle enable update button
             if(items.length != 0)    
             {
-                this.selectPn = items[0].pn
+                this.selectedCustId = items[0].custId
                 this.updateName = items[0].name
-                this.updateCategory = items[0].category
-                this.updateSize = items[0].size
-                this.updateSugar = items[0].sugar
-                this.updateIce = items[0].ice
-                this.updatePrice = items[0].price
+                this.updateTitle = items[0].title
+                this.updateAddress = items[0].address
+                this.updatePhone = items[0].phone
                 //alert(this.selectPn);
                 if(this.toggleDisabled)
                 {
@@ -409,7 +403,7 @@ export default {
         },
         clearSelected() {
             this.$refs.selectableTable.clearSelected();
-            this.queryPn = '';            
+            this.queryCustCode = '';            
         },
         countDownChangedOK(dismissCountDownOK) {
             this.dismissCountDownOK = dismissCountDownOK

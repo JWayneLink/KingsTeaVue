@@ -2,6 +2,11 @@
     <b-container class="bv-example-row">
         <b-row>
             <b-col></b-col>
+            <b-col><h3 style="font-style: italic;color:grey;" >{{ $t('AccountPage.NewAccount.title')}}</h3></b-col>
+            <b-col></b-col>
+        </b-row>
+        <b-row>
+            <b-col></b-col>
             <b-col>
                 <validation-observer ref="observer" v-slot="{ invalid }">
                     <!-- Success Alert -->
@@ -132,7 +137,7 @@
             submit() {
                 this.$refs.observer.validate();
 
-                //POST請求            
+                //POST NEW PRODUCT          
                 axios.post(`${process.env.VUE_APP_KTA_ACCOUNT}AddAccountAsync`,{
                     account: this.account,
                     name: this.fullname,

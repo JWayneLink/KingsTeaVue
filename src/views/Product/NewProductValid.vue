@@ -94,7 +94,7 @@
                             Clear
                         </v-btn>
                         <v-btn class="mr-4" style="float:right;" type="submit" :disabled="invalid">
-                            Create Product
+                            New Product
                         </v-btn>
                     </form>
                 </validation-observer>

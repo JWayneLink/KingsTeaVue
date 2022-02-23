@@ -8,9 +8,12 @@
         "Home":"Home",
         "Product":{
             "title": "Product",
-            "actions":["New Product","Maintenance Product"]
+            "actions": ["New Product","Maintenance Product"]
         },
-        "Customer":"Customer",
+        "Customer": {
+            "title":"Customer",
+            "actions": ["New Customer","Maintenance Customer"]
+        },
         "SalesOrder":"SalesOrder",
         "Account":
         {
@@ -24,6 +27,9 @@
             }
     },
     "AccountPage":{
+        "NewAccount":{
+            "title": "New Kings Tea Account"
+        },
         "LoginTitle":"Kings Tea Shop Sign In"
     },
     "ProductPage":{
@@ -32,6 +38,11 @@
         },
         "MaintenanceProduct": {
             "title": "Kings Tea Product Maintenance"
+        }
+    },
+    "CustomerPage":{
+        "NewCustomer":{
+            "title": "New Kings Tea Customer"
         }
     }
 }

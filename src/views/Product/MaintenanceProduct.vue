@@ -91,7 +91,7 @@
     <form ref="form" @submit.stop.prevent="handleSubmit">
         <!-- Disable Edit Product Number -->
         <b-input-group prepend="Pn" class="mb-2" >
-            <b-form-input disabled v-model="selectPn" aria-label="Pn" trim ></b-form-input>
+            <b-form-input disabled v-model="selectedPn" aria-label="Pn" trim ></b-form-input>
         </b-input-group>
 
         <!-- Name required valid message -->
@@ -188,7 +188,7 @@ export default {
                 updateSugar:'',
                 updateIce:'',
                 updatePrice:0,
-                selectPn: '',
+                selectedPn: '',
                 sizeOptions: [
                     { text: '   L   ', value: 'L' },
                     { text: '   M  ', value: 'M' },                    
@@ -269,7 +269,7 @@ export default {
         updateProduct(){
             // PUT UPDATE          
             axios.put(`${process.env.VUE_APP_KTA_PRODUCT}UpdateProductAsync`,{
-                pn: this.selectPn,
+                pn: this.selectedPn,
                 name: this.updateName,
                 category: this.updateCategory,
                 size: this.updateSize,
@@ -293,10 +293,10 @@ export default {
         },
         deleteProduct(){
 
-            if(this.selectPn !=  '' && confirm("Do you really want to delete?"))    
+            if(this.selectedPn !=  '' && confirm("Do you really want to delete?"))    
             {
                 // DELETE
-                axios.delete(`${process.env.VUE_APP_KTA_PRODUCT}DeleteProductAsync?pn=${this.selectPn}`)
+                axios.delete(`${process.env.VUE_APP_KTA_PRODUCT}DeleteProductAsync?pn=${this.selectedPn}`)
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
@@ -325,7 +325,7 @@ export default {
             this.updateProduct();              
         },
         checkFormValidity() {
-            debugger;
+            
             const Valid = this.$refs.form.checkValidity()
             if (this.updateName == '')
             {
@@ -384,19 +384,17 @@ export default {
             this.modalShow = true;
         },
         onRowSelected(items) {
-            debugger;            
-                 
+
             // toggle enable update button
             if(items.length != 0)    
             {
-                this.selectPn = items[0].pn
+                this.selectedPn = items[0].pn
                 this.updateName = items[0].name
                 this.updateCategory = items[0].category
                 this.updateSize = items[0].size
                 this.updateSugar = items[0].sugar
                 this.updateIce = items[0].ice
-                this.updatePrice = items[0].price
-                //alert(this.selectPn);
+                this.updatePrice = items[0].price                
                 if(this.toggleDisabled)
                 {
                     this.toggleDisabled = false;

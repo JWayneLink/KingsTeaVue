@@ -192,8 +192,7 @@ export default {
         async queryAllCustomer(){
             // QUERY ALL CUSTOMER
             this.items = [];
-            let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetAllCustomersAsync`);
-            debugger;
+            let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetAllCustomersAsync`);        
             results.data.data.forEach((element) => {
                 let itemObj = {};
                 itemObj.custId = element.custId;
@@ -297,7 +296,6 @@ export default {
             this.updateCustomer();           
         },
         checkFormValidity() {
-            debugger;
             const Valid = this.$refs.form.checkValidity()
             if (this.updateName == '')
             {
@@ -380,8 +378,6 @@ export default {
             this.modalShow = true;
         },
         onRowSelected(items) {
-            debugger;            
-                 
             // toggle enable update button
             if(items.length != 0)    
             {

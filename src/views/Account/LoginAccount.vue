@@ -83,16 +83,12 @@
                     .then( (response) => {
                         if(response.data.isSuccess)
                         {
-                            debugger;
                             this.responseMsg = response.data.message;
                             this.showAlertOK();
                             // this.$localStorage.set('access_token', response.data.isSuccess);
-                            localStorage.setItem('access_token', 'true');                
-                            //this.$bus.$emit('logged', 'User logged');
-                            this.$router.push(`/mainpage`);                         
-                            // this.$forceUpdate();
-                            //window.location.reload();
-                            
+                            localStorage.setItem('access_token', 'true');            
+                            this.$bus.$emit('logged', 'login')
+                            this.$router.push(`/mainpage`);                                                   
                         }
                         else{
                             this.responseMsg = response.data.message;

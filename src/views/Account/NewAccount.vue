@@ -93,8 +93,6 @@
         methods: {
             async signup() {
                 // Authenticate against API
-
-                debugger;
                 event.preventDefault();
                 //POST請求            
                 axios.post(`https://localhost:44356/v1/api/AppAccount/AddAccountAsync`,{

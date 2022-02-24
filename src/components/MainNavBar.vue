@@ -53,7 +53,6 @@
                         v-for="lan in $t('NavBar.Lang.langs')" :key="lan">{{ lan }}
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
-
             </b-navbar-nav>
         </b-navbar>
         <router-view />
@@ -67,9 +66,6 @@
         BootstrapVue,
         IconsPlugin
     } from 'bootstrap-vue'
-
-
-
     // Install BootstrapVue
     Vue.use(BootstrapVue)
     // Optionally install the BootstrapVue icon components plugin
@@ -80,7 +76,7 @@
         name: 'MainNavBar',
         data() {
             return {
-
+                // isLogged:''
             }
         },
         'components': {
@@ -90,8 +86,8 @@
             logout(){
                 // remove access_token from localStorage
                 localStorage.removeItem('access_token');
-                this.$router.push(`/account/login`);
-                this.$forceUpdate();
+                //this.$router.push(`/account/login`);
+                this.$bus.$emit('logged', 'logout')
             },
             changelanguage: function (event) {
                 let lang = event.target.getAttribute('data-lang');

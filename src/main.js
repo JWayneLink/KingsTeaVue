@@ -7,10 +7,8 @@ import i18n from './i18n/i18n'
 import store from "./store";
 import vuetify from './plugins/vuetify';
 
+Vue.prototype.$bus = new Vue();
 Vue.config.productionTip = false
-
-
-
 
 new Vue({
   store,

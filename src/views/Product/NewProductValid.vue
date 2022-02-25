@@ -1,5 +1,5 @@
 <template>
-    <div class="container">        
+    <b-container>      
         <b-row>
             <b-col></b-col>
             <b-col><h3 style="font-style: italic;color:grey;">{{ $t('ProductPage.NewProduct.title') }}</h3></b-col>
@@ -48,23 +48,19 @@
                             </v-text-field>
                         </validation-provider>
 
-                        <!-- <validation-provider v-slot="{ errors }" name="size" rules="required|max:10">
-                            <v-text-field v-model="size" :counter="10" :error-messages="errors" label="Size" required>
-                            </v-text-field>
-                        </validation-provider> -->
-
-                        <b-form-group label="Size" v-slot="{ ariaDescribedby }">                            
+                        <label for="btn-radios-1" class="form-label" style="color:grey;">Size</label>                           -->
+                        <b-input-group>
                         <b-form-radio-group
                             id="btn-radios-1"
                             v-model="size"
                             
                             :options="sizeOptions"
-                            :aria-describedby="ariaDescribedby"
+                            
                             size="lg"
                             name="radios-btn-default"
                             buttons
-                        ></b-form-radio-group>                        
-                        </b-form-group>
+                        ></b-form-radio-group>  
+                        </b-input-group>
 
                         <label for="rating-lg" class="mt-3" style="color:grey;" >Sugar</label>
                         <b-input-group>
@@ -78,12 +74,11 @@
                                 </b-input-group-text>
                             </b-input-group-append>
                         </b-input-group>
-
-                        <label for="iceRange" style="color:grey;">Ice</label>
-                        <b-input-group>
-                            <b-form-input id="iceRange" v-model="ice" type="range" min="0" max="5"></b-form-input>
-                        </b-input-group>
                         
+                        <label for="iceRange" class="form-label" style="color:grey;">Ice</label>
+                        <b-input-group>
+                            <input type="range" class="form-range" id="iceRange"  v-model="ice" min="0" max="5">
+                        </b-input-group>
 
                         <validation-provider v-slot="{ errors }" name="price" rules="required|numeric">
                             <v-text-field v-model="price" :counter="10" :error-messages="errors" label="Price" required>
@@ -101,7 +96,7 @@
             </b-col>
             <b-col></b-col>
         </b-row>
-    </div>
+    </b-container>
 </template>
 
 <script>

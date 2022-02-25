@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [{
   path: "/",
-  name: "MainPageView",
-  component: () => import('../views/MainPageView.vue')
+  name: "Login Account",
+  component: () => import('../views/Account/LoginAccount.vue')
   },
   {
     path: "/account/login",
@@ -18,6 +18,16 @@ const routes = [{
     path: "/account/new",
     name: "New Account",
     component: () => import('../views/Account/NewAccountValid.vue')
+  },
+  {
+    path: "/account/setting",
+    name: "Setting Account",
+    component: () => import('../views/Account/SettingAccount.vue')
+  },
+  {
+    path: "/account/forgotpassword",
+    name: "Forgot Password",
+    component: () => import('../views/Account/ForgotPassword.vue')
   },
   {
     path: "/mainpage",
@@ -82,8 +92,11 @@ const router = new VueRouter({
   routes
 })
 
+
 // router.beforeEach((to, from, next)=>{
 
 // })
+
+
 
 export default router

@@ -1,4 +1,4 @@
-<template ref="foo">
+<template>
     <div>
         <MainNavBar v-if="isLogged === 'true'"></MainNavBar>
         <SignupNavBar  v-if="isLogged === 'false'"></SignupNavBar>
@@ -20,7 +20,6 @@ export default {
     {
         this.isLogged = this.checkIfIsLogged();    
         this.$bus.$on('logged', () => {
-            debugger;
             this.isLogged = this.checkIfIsLogged();
             this.forceUpdate();
         }); 

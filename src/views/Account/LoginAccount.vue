@@ -1,44 +1,62 @@
 <template>
-    <div class="login">
-    <!-- <SignupNavBar></SignupNavBar> -->
-        <div class="form">
-            <!-- Success Alert -->
-            <b-alert
-            :show="dismissCountDownOK"
-            dismissible
-            variant="success"
-            @dismissed="dismissCountDownOK=0"
-            @dismiss-count-down="countDownChangedOK"
-            >
-            {{ responseMsg }}
-            </b-alert>
+<b-container>
+    <b-row>
+        <b-col cols="4"></b-col>
+        <b-col cols="4">
+            <div class="login">
+            <!-- <SignupNavBar></SignupNavBar> -->
+                <div class="form">
+                    <!-- Success Alert -->
+                    <b-alert
+                    :show="dismissCountDownOK"
+                    dismissible
+                    variant="success"
+                    @dismissed="dismissCountDownOK=0"
+                    @dismiss-count-down="countDownChangedOK"
+                    >
+                    {{ responseMsg }}
+                    </b-alert>
 
-            <!-- Unsuccess Alert -->
-            <b-alert
-            :show="dismissCountDownNG"
-            dismissible
-            variant="danger"
-            @dismissed="dismissCountDownNG=0"
-            @dismiss-count-down="countDownChangedNG"
-            >
-            {{ responseMsg }}
-            </b-alert>
-            
-            <!-- Login -->
-            <h3 style="font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
-            <div class="form-group">
-                <label>Account</label>
-                <input v-model="account" type="text" class="form-control form-control-lg" />
+                    <!-- Unsuccess Alert -->
+                    <b-alert
+                    :show="dismissCountDownNG"
+                    dismissible
+                    variant="danger"
+                    @dismissed="dismissCountDownNG=0"
+                    @dismiss-count-down="countDownChangedNG"
+                    >
+                    {{ responseMsg }}
+                    </b-alert>
+                    
+                    <!-- Login -->
+                    <h3 style="font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
+                    <div class="form-group">
+                        <label>Account</label>
+                        <input v-model="account" type="text" class="form-control form-control-lg" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input v-model="password" type="password" class="form-control form-control-lg" />
+                    </div>
+
+                    <button @click="login" class="btn btn-dark btn-lg btn-block">Sign in</button>
+                    
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <input v-model="password" type="password" class="form-control form-control-lg" />
-            </div>
-
-            <button @click="login" class="btn btn-dark btn-lg btn-block">Sign in</button>
-        </div>
-    </div>
+        </b-col>
+        <b-col cols="4"></b-col>
+    </b-row>
+    <b-row>
+        <b-col cols="5"></b-col>
+        <b-col cols="5">
+            <p class=" mt-2 mb-4" style="padding:0.2rem 1rem;">
+                <router-link to="/account/forgotpassword">Forgot password ?</router-link>
+            </p>
+        </b-col>
+        <b-col cols="2"></b-col>
+    </b-row>
+</b-container>
 </template>
 
 <script>
@@ -85,9 +103,9 @@
                         {
                             this.responseMsg = response.data.message;
                             this.showAlertOK();
-                            // this.$localStorage.set('access_token', response.data.isSuccess);
+                            localStorage.setItem('account', this.account); 
                             localStorage.setItem('access_token', 'true');            
-                            this.$bus.$emit('logged', 'login')
+                            this.$bus.$emit('logged', this.account);
                             this.$router.push(`/mainpage`);                                                   
                         }
                         else{

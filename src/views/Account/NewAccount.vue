@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <b-container>
         <h1>New Account View</h1>
 
         <b-row>
@@ -63,7 +63,7 @@
             </b-col>
             <b-col></b-col>
         </b-row>
-    </div>
+    </b-container>
 </template>
 
 <script>

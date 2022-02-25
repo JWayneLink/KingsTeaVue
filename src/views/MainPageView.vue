@@ -1,48 +1,83 @@
 <template>
-    <div class="container">
-        <h1>Main Page View</h1>
-        <!-- <slot name="switch">switch</slot> -->
+    <b-container>
+        <b-carousel
+            id="carousel-fade"
+            style="text-shadow: 0px 0px 2px #000"
+            :interval="4000"
+            fade
+            indicators
+        >
+            <b-carousel-slide
+            caption="First slide"
+            img-src="https://picsum.photos/1024/480/?image=26"
+            ></b-carousel-slide>
+            <b-carousel-slide
+            caption="Second Slide"
+            img-src="https://picsum.photos/1024/480/?image=9"
+            ></b-carousel-slide>
+            <b-carousel-slide
+            caption="Third Slide"
+            img-src="https://picsum.photos/1024/480/?image=22"
+            ></b-carousel-slide>
+            <b-carousel-slide
+            caption="Fourth Slide"
+            img-src="https://picsum.photos/1024/480/?image=12"
+            ></b-carousel-slide>
+        </b-carousel>
 
-    </div>
+
+        <div class="mt-4">
+            <h4>Left and Right (or Start and End)</h4>
+            <b-card img-src="https://picsum.photos/300/300/?image=99" img-alt="Card image" img-left class="mb-3">
+            <b-card-text>
+                Some quick example text to build on the card and make up the bulk of the card's content.
+            </b-card-text>
+            </b-card>
+
+            <b-card img-src="https://picsum.photos/300/300/?image=68" img-alt="Card image" img-right>
+            <b-card-text>
+                Some quick example text to build on the card and make up the bulk of the card's content.
+            </b-card-text>
+            </b-card>
+        </div>
+        <div class="mt-4">
+            <h4>Left and Right (or Start and End)</h4>
+            <b-card img-src="https://picsum.photos/300/300/?image=78" img-alt="Card image" img-left class="mb-3">
+            <b-card-text>
+                Some quick example text to build on the card and make up the bulk of the card's content.
+            </b-card-text>
+            </b-card>
+        </div>
+    </b-container>
 </template>
 
 <script>
-// Globally
-//import Vue from 'vue';
-// Vue.forceUpdate();
-//import NavbarSwitch from '../components/NavbarSwitch.vue'
-// Vue.use(NavbarSwitch)
+
 export default {
-    // inject:['reload'],
     name: 'MainPageView',
+    data(){
+        return {
+            //loginUser:''
+        }
+    },
     beforeCreate(){
-        //debugger;
-        //this.$forceUpdate();  
-            // window.setTimeout(( () => {
-            //     //alert(123);
-            // } ), 500);
+
     },
     created () {
         
-
-        //this.$refs.foo.forceUpdate(); 
-        //this.$forceUpdate();
-        //this.reload();
-        //const vm = this;
-        // window.setTimeout( () => {
-        //     console.log("refreshing vm..");
-        //     NavbarSwitch.$forceUpdate();
-        // }, 2000);
     },
     beforeMount(){  
 
+    },
+    mounted()
+    {
+    
     },
     components:
     {
         
     },
     methods:{
-
 
     }
 

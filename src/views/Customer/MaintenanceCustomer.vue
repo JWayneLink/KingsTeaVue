@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <b-container>
         <b-row>
             <b-col cols="2"></b-col>
             <b-col cols="8"><b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('')}}</h3></b-col></b-col>
@@ -59,7 +59,7 @@
             </b-col>            
         </b-row> 
 
-        <!-- Product Table -->
+        <!-- Customer Table -->
         <b-row>
             <b-col cols="2"></b-col>
             <b-col cols="8">
@@ -140,7 +140,7 @@
 </form> 
 </b-modal>
 
-    </div>
+</b-container>
 </template>
 
 <script>
@@ -291,12 +291,16 @@ export default {
             // Prevent modal from closing
             bvModalEvt.preventDefault()
             // Trigger submit handler
-            this.handleSubmit();
-
-            this.updateCustomer();           
+            let validResult = this.handleSubmit();
+            debugger;
+            if(validResult)
+            {
+                this.updateCustomer();
+            }            
         },
         checkFormValidity() {
             const Valid = this.$refs.form.checkValidity()
+            debugger;
             if (this.updateName == '')
             {
                 this.nameState = Valid;                
@@ -326,7 +330,7 @@ export default {
                 return Valid
             }
             else if(this.updateAddress == '')
-            {
+            {                
                 this.addressState = Valid;
                 if( this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
@@ -365,14 +369,18 @@ export default {
         handleSubmit() {
             // Exit when the form isn't valid
             if (!this.checkFormValidity()) {
-                return
+                return false;
+            }
+            else{
+                return true;
             }
             // Push the name to submitted names
             //this.submittedNames.push(this.name)
             // Hide the modal manually
-            this.$nextTick(() => {
-            this.$bvModal.hide('modal-prevent-closing')
-            });
+            // this.$nextTick(() => {
+            // this.$bvModal.hide('modal-prevent-closing')
+            // });
+            
         },
         showUpdateModal(){
             this.modalShow = true;

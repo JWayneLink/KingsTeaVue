@@ -3,12 +3,12 @@
         <b-navbar type="dark" variant="secondary " >
             <b-navbar-nav>
                 <b-nav-item>
-                    <router-link to="/"> {{ $t('NavBar.Home') }} </router-link>
+                    <router-link to="/mainpage"> {{ $t('NavBar.Home') }} </router-link>
                 </b-nav-item>
 
                 <!-- Navbar dropdowns -->
                 <!-- Product Nav -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Product.title')" right>
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Product.title')">
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/product/new">{{$t('NavBar.Product.actions[0]')}}</router-link>
                     </b-dropdown-item>
@@ -18,7 +18,7 @@
                 </b-nav-item-dropdown>
 
                 <!-- Customer Nav -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Customer.title')" right>
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Customer.title')">
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/customer/new">{{ $t('NavBar.Customer.actions[0]')}}</router-link>
                     </b-dropdown-item>
@@ -26,33 +26,40 @@
                          <router-link style="color:black;" to="/customer/maintenance">{{ $t('NavBar.Customer.actions[1]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
-
-                <!-- <b-nav-item>
-                    <router-link to="/customer"> {{ $t('NavBar.Customer') }} </router-link>
-                </b-nav-item> -->
-
-
                 <b-nav-item>
                     <router-link to="/salesorder"> {{ $t('NavBar.SalesOrder') }} </router-link>
-                </b-nav-item>
+                </b-nav-item>        
+            </b-navbar-nav>
 
+
+            <!-- Right Area -->
+            <b-navbar-nav class="ms-auto">
                 <!-- Navbar dropdowns -->
-                <!-- Account -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Account.title')" right>
-                    <b-dropdown-item>
-                        <router-link style="color:black;" to="/account/new">{{$t('NavBar.Account.actions[0]')}}</router-link>
-                    </b-dropdown-item>
-                    <b-dropdown-item href="#" @click="logout">
-                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[1]')}}</router-link>
-                    </b-dropdown-item>
-                </b-nav-item-dropdown>
-
                 <!-- Languages -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Lang.title')">
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Lang.title')" >
                     <b-dropdown-item v-bind:data-lang="lan" href="#" right v-on:click="changelanguage"
                         v-for="lan in $t('NavBar.Lang.langs')" :key="lan">{{ lan }}
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
+
+                <!-- Account -->
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Account.title')">
+                    
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/account/new">{{$t('NavBar.Account.actions[0]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/account/setting">{{$t('NavBar.Account.actions[1]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="#" @click="logout">
+                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[2]')}}</router-link>
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
+                <b-nav-item>                    
+                    <b-avatar variant="outline-primary" ></b-avatar>
+                </b-nav-item>
+                                
             </b-navbar-nav>
         </b-navbar>
         <router-view />
@@ -76,17 +83,17 @@
         name: 'MainNavBar',
         data() {
             return {
-                // isLogged:''
+                
             }
         },
-        'components': {
-
+        mounted()
+        {
+            
         },
         methods: {
             logout(){
                 // remove access_token from localStorage
                 localStorage.removeItem('access_token');
-                //this.$router.push(`/account/login`);
                 this.$bus.$emit('logged', 'logout')
             },
             changelanguage: function (event) {

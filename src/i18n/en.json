@@ -18,7 +18,7 @@
         "Account":
         {
             "title":"Account",
-            "actions":["New Account","Sign Out"]
+            "actions":["New Account","Settings","Sign Out"]
         },
         "Lang":
             {
@@ -30,7 +30,8 @@
         "NewAccount":{
             "title": "New Kings Tea Account"
         },
-        "LoginTitle":"Kings Tea Shop Sign In"
+        "LoginTitle":"Kings Tea Shop Sign In",
+        "ForgotPassowrd":"Forgot Passowrd"
     },
     "ProductPage":{
         "NewProduct": {

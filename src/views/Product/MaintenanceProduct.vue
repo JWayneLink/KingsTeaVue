@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <b-container>
         <b-row>
             <b-col cols="2"></b-col>            
             <b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
@@ -153,7 +153,7 @@
         <!-- Update Modal End -->
 
 
-    </div>
+</b-container>
 </template>
 
 <script>
@@ -320,9 +320,12 @@ export default {
             // Prevent modal from closing
             bvModalEvt.preventDefault()
             // Trigger submit handler
-            this.handleSubmit();
-
-            this.updateProduct();              
+            let validResult = this.handleSubmit();
+            debugger;
+            if(validResult)
+            {
+                this.updateProduct(); 
+            }             
         },
         checkFormValidity() {
             
@@ -371,14 +374,17 @@ export default {
         handleSubmit() {
             // Exit when the form isn't valid
             if (!this.checkFormValidity()) {
-                return
-            }
+                return false;
+            }   
+            else{
+                return true;
+            }         
             // Push the name to submitted names
             //this.submittedNames.push(this.name)
             // Hide the modal manually
-            this.$nextTick(() => {
-            this.$bvModal.hide('modal-prevent-closing')
-            });
+            // this.$nextTick(() => {
+            // this.$bvModal.hide('modal-prevent-closing')
+            // });            
         },
         showUpdateModal(){
             this.modalShow = true;

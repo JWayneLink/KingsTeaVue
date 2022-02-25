@@ -2,15 +2,15 @@
 import axios from 'axios';
 import router from '@/router';
 
-const CustomerApi = axios.create({
-  'baseURL': process.env.VUE_APP_KTA_CUSTOMER,
+const SalesOrderApi = axios.create({
+  'baseURL': process.env.VUE_APP_KTA_SALESORDER,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
   }
 });
 
-CustomerApi.interceptors.response.use(null, error => {
+SalesOrderApi.interceptors.response.use(null, error => {
   let path = '/error';
 
   switch (error.response.status) {
@@ -23,4 +23,4 @@ CustomerApi.interceptors.response.use(null, error => {
   return Promise.reject(error);
 });
 
-export default CustomerApi;
+export default SalesOrderApi;

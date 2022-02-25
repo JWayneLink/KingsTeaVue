@@ -1,8 +1,9 @@
 <template>
     <b-container>
+        <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col cols="2"></b-col>            
-            <b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
+            <b-col cols="8"><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
             <b-col cols="2"></b-col>
         </b-row>        
         <b-row>

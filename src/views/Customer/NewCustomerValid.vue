@@ -1,8 +1,9 @@
 <template>
 <b-container>
+    <b-row style="height:36px;"></b-row>
     <b-row>
         <b-col></b-col>
-        <b-col><h3 style="font-style: italic;color:grey;" >{{ $t('CustomerPage.NewCustomer.title')}}</h3></b-col>
+        <b-col><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('CustomerPage.NewCustomer.title')}}</h3></b-col>
         <b-col></b-col>
     </b-row>
     <b-row>
@@ -77,11 +78,11 @@
     import Vue from 'vue'
     import axios from 'axios'
     import VueAxios from 'vue-axios'
-    Vue.use(VueAxios, axios)
+    import CustomerApi from '@/api/CustomerApi.js'
     import {required, max } from 'vee-validate/dist/rules'
     import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
     setInteractionMode('eager')
-
+    Vue.use(VueAxios, axios)
     extend('required', {
         ...required,
         message: '{_field_} can not be empty',
@@ -116,7 +117,7 @@
                 this.$refs.observer.validate();
 
                 //POST NEW PRODUCT          
-                axios.post(`${process.env.VUE_APP_KTA_CUSTOMER}AddCustomerAsync`,{
+                CustomerApi.post(`AddCustomerAsync`,{
                     custId: this.cusomercode,
                     name: this.name,
                     title: this.title,
@@ -134,7 +135,13 @@
                         this.showAlertNG();
                     }
                 })
-                .catch( (error) => alert(error));     
+                .catch( (error) => {
+                    if(error.response.status == 422)
+                    {
+                        this.responseMsg = error.response.data[Object.keys(error.response.data)]
+                        this.showAlertNG();
+                    }
+                });     
             },
             clear() {
                 this.cusomercode = ''

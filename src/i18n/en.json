@@ -8,7 +8,7 @@
         "Home":"Home",
         "Product":{
             "title": "Product",
-            "actions": ["New Product","Maintenance Product"]
+            "actions": ["New Product","Maintenance Product", "Product Information"]
         },
         "Customer": {
             "title":"Customer",
@@ -39,11 +39,17 @@
         },
         "MaintenanceProduct": {
             "title": "Kings Tea Product Maintenance"
+        },
+        "InformationProduct":{
+            "title":"Kings Tea Product Information"
         }
     },
     "CustomerPage":{
         "NewCustomer":{
             "title": "New Kings Tea Customer"
+        },
+        "MaintenanceCustomer": {
+            "title": "Kings Tea Customer Maintenance"
         }
     }
 }

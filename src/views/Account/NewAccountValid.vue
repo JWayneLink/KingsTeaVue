@@ -86,9 +86,9 @@
     import axios from 'axios'
     import VueAxios from 'vue-axios'
     import AccountApi from "@/api/AccountApi.js";
-    Vue.use(VueAxios, axios)
     import {required, digits, email, max, regex } from 'vee-validate/dist/rules'
     import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+    Vue.use(VueAxios, axios)
     setInteractionMode('eager')
 
     extend('digits', {

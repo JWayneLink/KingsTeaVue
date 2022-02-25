@@ -1,8 +1,9 @@
 <template>
     <b-container>
+        <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col cols="2"></b-col>
-            <b-col cols="8"><b-col cols="8"><h3 style="font-style: italic;color:grey;" >{{ $t('')}}</h3></b-col></b-col>
+            <b-col cols="8"><b-col cols="8"><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('CustomerPage.MaintenanceCustomer.title')}}</h3></b-col></b-col>
             <b-col cols="2"></b-col>
         </b-row>
         <b-row>
@@ -73,7 +74,16 @@
                 selectable                  
                 ref="selectableTable"      
                 @row-selected="onRowSelected"
-                ></b-table>            
+                ></b-table>    
+<!-- 
+    
+  <v-data-table
+    :headers="items"
+    :items="fields"
+    :items-per-page="5"
+    class="elevation-1"
+  ></v-data-table> -->
+        
             </b-col>
             <b-col cols="2"></b-col>
         </b-row>  
@@ -147,12 +157,13 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAsios from 'vue-axios'
+import CustomerApi from '@/api/CustomerApi.js'
 Vue.use(VueAsios, axios)
 
 export default {
     name:'MaintenanceCustomer',
     data(){
-        return {
+        return {            
             fields: [                
                     { key: 'custId'  },
                     { key: 'name' },
@@ -192,7 +203,7 @@ export default {
         async queryAllCustomer(){
             // QUERY ALL CUSTOMER
             this.items = [];
-            let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetAllCustomersAsync`);        
+            let results = await CustomerApi.get(`GetAllCustomersAsync`);        
             results.data.data.forEach((element) => {
                 let itemObj = {};
                 itemObj.custId = element.custId;
@@ -215,7 +226,7 @@ export default {
             else
             {               
                 // QUERY SINGLE          
-                let results = await axios.get(`${process.env.VUE_APP_KTA_CUSTOMER}GetSingleCustomerAsync?custId=${this.queryCustCode}`);
+                let results = await CustomerApi.get(`GetSingleCustomerAsync?custId=${this.queryCustCode}`);
                 this.items = [];
                 if(results.data.isSuccess && results.data.data[0] != null)
                 {
@@ -241,7 +252,7 @@ export default {
         },
         updateCustomer(){
             // PUT UPDATE          
-            axios.put(`${process.env.VUE_APP_KTA_CUSTOMER}UpdateCustomerAsync`,{
+            CustomerApi.put(`UpdateCustomerAsync`,{
                 custId: this.selectedCustId,
                 name: this.updateName,
                 title: this.updateTitle,
@@ -267,7 +278,7 @@ export default {
             if(this.selectedCustId !=  '' && confirm("Do you really want to delete?"))    
             {                
                 // DELETE
-                axios.delete(`${process.env.VUE_APP_KTA_CUSTOMER}DeleteCustomerAsync?custId=${this.selectedCustId}`)
+                CustomerApi.delete(`DeleteCustomerAsync?custId=${this.selectedCustId}`)
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
@@ -292,7 +303,6 @@ export default {
             bvModalEvt.preventDefault()
             // Trigger submit handler
             let validResult = this.handleSubmit();
-            debugger;
             if(validResult)
             {
                 this.updateCustomer();
@@ -300,7 +310,6 @@ export default {
         },
         checkFormValidity() {
             const Valid = this.$refs.form.checkValidity()
-            debugger;
             if (this.updateName == '')
             {
                 this.nameState = Valid;                
@@ -379,8 +388,7 @@ export default {
             // Hide the modal manually
             // this.$nextTick(() => {
             // this.$bvModal.hide('modal-prevent-closing')
-            // });
-            
+            // });        
         },
         showUpdateModal(){
             this.modalShow = true;

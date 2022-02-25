@@ -1,8 +1,9 @@
 <template>
     <b-container>      
+        <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col></b-col>
-            <b-col><h3 style="font-style: italic;color:grey;">{{ $t('ProductPage.NewProduct.title') }}</h3></b-col>
+            <b-col><h3 style="font-style: italic;color:rgb(137, 30, 49);">{{ $t('ProductPage.NewProduct.title') }}</h3></b-col>
             <b-col></b-col>
         </b-row>
         <b-row>
@@ -99,17 +100,18 @@
 
 <script>
 import Vue from 'vue'
-    import axios from 'axios'
-    import VueAxios from 'vue-axios'
-    Vue.use(VueAxios, axios)
-    import {required, numeric, max } from 'vee-validate/dist/rules'
-    import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
-        import {
-        BootstrapVue,
-        IconsPlugin
-    } from 'bootstrap-vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import ProductApi from "@/api/ProductApi.js";
+import {required, numeric, max } from 'vee-validate/dist/rules'
+import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+    import {
+    BootstrapVue,
+    IconsPlugin
+} from 'bootstrap-vue'
         // Install BootstrapVue
     Vue.use(BootstrapVue)
+    Vue.use(VueAxios, axios)
     // Optionally install the BootstrapVue icon components plugin
     Vue.use(IconsPlugin)
     setInteractionMode('eager')
@@ -160,7 +162,7 @@ import Vue from 'vue'
                 this.$refs.observer.validate();
 
                 //POST請求            
-                axios.post(`${process.env.VUE_APP_KTA_PRODUCT}AddProductAsync`,{
+                ProductApi.post(`AddProductAsync`,{
                     pn: this.pn,
                     name: this.name,
                     category: this.category,

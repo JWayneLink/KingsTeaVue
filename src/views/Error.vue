@@ -1,6 +1,6 @@
 <template>
-    <div class="error">
-        <p>ERROR ERROR</p>
+    <div class="container">
+        <img src="../assets/404Error.png" alt="" style="width:100%">
     </div>
 </template>
 

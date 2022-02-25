@@ -91,3 +91,10 @@
         color: rgba(255, 255, 255, 0.55);
     }
 </style>
+
+<style scoped>
+/* override navbar color */
+ .navbar.navbar-dark.bg-secondary{
+     background-color: rgb(137, 30, 49)!important;
+ }
+</style>

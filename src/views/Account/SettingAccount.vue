@@ -84,14 +84,8 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import AccountApi from "@/api/AccountApi.js";
 
-// import {
-//     BootstrapVue,
-//     IconsPlugin
-// } from 'bootstrap-vue'
-// // Install BootstrapVue
-// Vue.use(BootstrapVue)
-// Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios)
 export default {
     name:'AccountSetting',
@@ -121,7 +115,7 @@ export default {
         getAccountInfo(){
             if(this.account != '')
             {       
-                axios.get(`${process.env.VUE_APP_KTA_ACCOUNT}GetSingleAccountAsync?account=${this.account}`)
+                AccountApi.get(`GetSingleAccountAsync?account=${this.account}`)
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
@@ -157,7 +151,7 @@ export default {
         confirmUpdate(){
             if(this.account != '')
             {
-                axios.put(`${process.env.VUE_APP_KTA_ACCOUNT}UpdateAccountAsync`,{
+                AccountApi.put(`UpdateAccountAsync`,{
                 account: this.account,
                 name: this.name,
                 email: this.email,

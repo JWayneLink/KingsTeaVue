@@ -60,21 +60,6 @@ const routes = [{
     component: () => import('../views/SalesOrder/SalesOrder.vue')
   },
   {
-    path: '/user/:userId',
-    name: 'User',
-    component: () => import('../views/User.vue'),
-    meta: {
-      requiredsAuth: false
-    },
-    beforeEnter: (to, from, next) => {
-      if (to.meta.requiredsAuth) {
-        // need to login
-      } else {
-        next();
-      }
-    }
-  },
-  {
     path: "/error",
     name: "Error",
     component: () => import('../views/Error.vue')
@@ -93,9 +78,52 @@ const router = new VueRouter({
 })
 
 
-// router.beforeEach((to, from, next)=>{
+router.beforeEach((to, from, next)=>{
 
-// })
+  let isAuthenticated = localStorage.getItem('access_token')
+  if(
+    to.name == 'Login Account'||
+    to.name == 'New Account' ||
+    to.name == 'Forgot Password'
+    )
+  {
+    next();
+  }
+  else{
+    if(isAuthenticated == null)
+    {
+      if(
+        to.name == 'Error' ||
+        to.name == '404Error'
+      )
+      {
+        next({
+          redirect:to.fullPath
+        })
+      }
+      else{
+        // There is no token, re authentication is required
+        next({ name: 'Login Account' })
+      }      
+    }
+    else{
+      if(
+        to.name == 'Error' ||
+        to.name == '404Error'
+      )
+      {
+        next({
+          redirect:to.fullPath
+        })
+      }
+      else{
+        // Get token and verified OK
+        next();
+      } 
+      
+    }
+  }
+})
 
 
 

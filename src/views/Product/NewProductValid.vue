@@ -48,14 +48,12 @@
                             </v-text-field>
                         </validation-provider>
 
-                        <label for="btn-radios-1" class="form-label" style="color:grey;">Size</label>                           -->
+                        <label for="btn-radios-1" class="form-label" style="color:grey;">Size</label>
                         <b-input-group>
                         <b-form-radio-group
                             id="btn-radios-1"
-                            v-model="size"
-                            
-                            :options="sizeOptions"
-                            
+                            v-model="size"                            
+                            :options="sizeOptions"                            
                             size="lg"
                             name="radios-btn-default"
                             buttons

@@ -1,5 +1,6 @@
 <template>
     <b-container>
+        <!-- <b-row style="height:36px;"></b-row> -->
         <b-row>
             <b-col></b-col>
             <b-col>
@@ -28,7 +29,7 @@
                         </b-alert>
                         
                         <!-- Change New Password -->
-                        <h3 style="font-style: italic;color:grey;">{{ $t('AccountPage.ForgotPassowrd')}}</h3>
+                        <h3 style="font-style: italic;color:rgb(137, 30, 49);">{{ $t('AccountPage.ForgotPassowrd')}}</h3>
                         <div class="form-group">
                             <label>Account</label>
                             <input v-model="account" type="text" class="form-control form-control-lg" />

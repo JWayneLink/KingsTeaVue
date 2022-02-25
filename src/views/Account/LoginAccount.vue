@@ -29,7 +29,7 @@
                     </b-alert>
                     
                     <!-- Login -->
-                    <h3 style="font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
+                    <h3 style="color:rgb(137, 30, 49);font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
                     <div class="form-group">
                         <label>Account</label>
                         <input v-model="account" type="text" class="form-control form-control-lg" />
@@ -40,7 +40,7 @@
                         <input v-model="password" type="password" class="form-control form-control-lg" />
                     </div>
 
-                    <button @click="login" class="btn btn-dark btn-lg btn-block">Sign in</button>
+                    <button @click="login" class="btn btn-dark btn-lg btn-block" >Sign in</button>
                     
                 </div>
             </div>
@@ -60,10 +60,10 @@
 </template>
 
 <script>
-    import Vue from 'vue'
-    import axios from 'axios'
-    import VueAxios from 'vue-axios'
-    // import SignupNavBar from '../../components/SignupNavBar.vue'
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import AccountApi from "@/api/AccountApi.js";
 
     Vue.use(VueAxios, axios)
     export default {
@@ -93,8 +93,8 @@
                 }
                 else
                 {
-                    //POST Login請求            
-                    axios.post(`${process.env.VUE_APP_KTA_ACCOUNT}AccountLoginAsync`,{
+                    //POST Login請求   
+                    AccountApi.post(`AccountLoginAsync`,{
                         account: this.account,
                         pwd: this.password,
                     })
@@ -115,9 +115,9 @@
                     })
                     .catch( (error) => {
                         if (error.response) {
-                            console.log(error.response.data)
-                            console.log(error.response.status)
-                            console.log(error.response.headers)
+                            // console.log(error.response.data)
+                            // console.log(error.response.status)
+                            // console.log(error.response.headers)
                         }
                     });
                 }            

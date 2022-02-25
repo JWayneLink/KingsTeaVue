@@ -1,8 +1,9 @@
 <template>
     <b-container class="bv-example-row">
+        <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col></b-col>
-            <b-col><h3 style="font-style: italic;color:grey;" >{{ $t('AccountPage.NewAccount.title')}}</h3></b-col>
+            <b-col><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('AccountPage.NewAccount.title')}}</h3></b-col>
             <b-col></b-col>
         </b-row>
         <b-row>
@@ -84,6 +85,7 @@
     import Vue from 'vue'
     import axios from 'axios'
     import VueAxios from 'vue-axios'
+    import AccountApi from "@/api/AccountApi.js";
     Vue.use(VueAxios, axios)
     import {required, digits, email, max, regex } from 'vee-validate/dist/rules'
     import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
@@ -138,7 +140,7 @@
                 this.$refs.observer.validate();
 
                 //POST NEW PRODUCT          
-                axios.post(`${process.env.VUE_APP_KTA_ACCOUNT}AddAccountAsync`,{
+                AccountApi.post(`AddAccountAsync`,{
                     account: this.account,
                     name: this.fullname,
                     pwd: this.password,

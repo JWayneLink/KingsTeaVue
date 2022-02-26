@@ -19,7 +19,14 @@ import NavbarSwith from './components/NavbarSwitch.vue'
     {
       NavbarSwith
     },
+      beforeDestroy() {   
+        window.removeEventListener("beforeunload", this.onUnload);
+      },
     methods: {
+      onUnload() {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('account');        
+      }
     }
 
     // data: () => ({

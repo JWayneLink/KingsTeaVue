@@ -8,17 +8,19 @@
         "Home":"Home",
         "Product":{
             "title": "Product",
-            "actions": ["New Product","Maintenance Product", "Product Information"]
+            "actions": ["New Product", "Product Management", "Product Information"]
         },
         "Customer": {
             "title":"Customer",
-            "actions": ["New Customer","Maintenance Customer"]
+            "actions": ["New Customer","Customer Management"]
         },
-        "SalesOrder":"SalesOrder",
-        "Account":
-        {
+        "SalesOrder": {
+            "title": "Sales Order",
+            "actions": ["New Sales Order"]
+        },
+        "Account": {
             "title":"Account",
-            "actions":["New Account","Settings","Sign Out"]
+            "actions":["New Account","Account Management","Settings", "Sign Out"]
         },
         "Lang":
             {
@@ -29,6 +31,9 @@
     "AccountPage":{
         "NewAccount":{
             "title": "New Kings Tea Account"
+        },
+        "MaintenanceProduct": {
+            "title": "Kings Tea Account Maintenance"
         },
         "LoginTitle":"Kings Tea Shop Sign In",
         "ForgotPassowrd":"Forgot Passowrd"

@@ -29,9 +29,15 @@
                          <router-link style="color:black;" to="/customer/maintenance">{{ $t('NavBar.Customer.actions[1]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
-                <b-nav-item>
-                    <router-link to="/salesorder"> {{ $t('NavBar.SalesOrder') }} </router-link>
-                </b-nav-item>        
+
+                <!-- SalesOrder Nav -->
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.SalesOrder.title')">
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/salesorder/new">{{ $t('NavBar.SalesOrder.actions[0]')}}</router-link>
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
+      
             </b-navbar-nav>
 
 
@@ -46,16 +52,18 @@
                 </b-nav-item-dropdown>
 
                 <!-- Account -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Account.title')">
-                    
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Account.title')">                    
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/account/new">{{$t('NavBar.Account.actions[0]')}}</router-link>
                     </b-dropdown-item>
                     <b-dropdown-item>
-                        <router-link style="color:black;" to="/account/setting">{{$t('NavBar.Account.actions[1]')}}</router-link>
+                        <router-link style="color:black;" to="/account/maintenance">{{$t('NavBar.Account.actions[1]')}}</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/account/setting">{{$t('NavBar.Account.actions[2]')}}</router-link>
                     </b-dropdown-item>
                     <b-dropdown-item href="#" @click="logout">
-                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[2]')}}</router-link>
+                         <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[3]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
 

@@ -10,6 +10,28 @@
         </b-row> -->
         <v-app>
             <v-container>
+                <!-- Success Alert -->
+                <b-alert
+                :show="dismissCountDownOK"
+                dismissible
+                variant="success"
+                @dismissed="dismissCountDownOK=0"
+                @dismiss-count-down="countDownChangedOK"
+                >
+                {{ responseMsg }}
+                </b-alert>
+
+                <!-- Unsuccess Alert -->
+                <b-alert
+                :show="dismissCountDownNG"
+                dismissible
+                variant="danger"
+                @dismissed="dismissCountDownNG=0"
+                @dismiss-count-down="countDownChangedNG"
+                >
+                {{ responseMsg }}
+                </b-alert>
+
                 <h1 class="mb-0" style="font-style: italic;color:#bf9000">Create your new customized order</h1>
                 <div class="overline mb-4">innovation, quality, humble &amp; execution</div>
                 <v-stepper v-model="curr" color="green">
@@ -49,7 +71,7 @@
                                         </v-row>
                                         <v-row>
                                             <v-col>
-                                                <v-text-field readonly v-model="selectedCustPhone" label="Phone">{{selectedCustPhone}}</v-text-field>
+                                                <v-text-field readonly v-model="selectedCustPhone" label="Phone" prepend-inner-icon="mdi-phone">{{selectedCustPhone}}</v-text-field>
                                             </v-col>
                                         </v-row>
                                         <v-row>
@@ -159,11 +181,12 @@
 
                 <v-row><v-col cols=".col-md-3 .offset-md-3"></v-col></v-row>
                 <v-alert
+                v-if="isStepsCompleted"
                 outlined
                 type="success"
                 text
                 >
-                SUCCESS TEST AKLER
+                {{responseMsg}}
                 </v-alert>
             </v-container>
         </v-app>
@@ -178,7 +201,7 @@ import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/lib/util/colors'
 import ProductApi from "@/api/ProductApi.js";
 import CustomerApi from '@/api/CustomerApi.js'
-// import SalesOrderApi from '@/api/SalesOrderApi.js'
+import SalesOrderApi from '@/api/SalesOrderApi.js'
 
 
 Vue.use(Vuetify)
@@ -231,20 +254,23 @@ Vue.use(Vuetify)
                 previewTotalPrice:0,
                 selectMode: 'single',
                 toggleDisabled: true,
-                removedItem:0
-
+                removedItem:0,
+                dismissSecs: 3,
+                dismissCountDownOK: 0,
+                dismissCountDownNG: 0,
+                responseMsg:'',
+                isStepsCompleted: false,
             }
         },
-        components:{},        
+        components:{},   
+        created() {},     
         mounted(){
 
             // if(this.n==0)this.backDisabled = true;
-            // else this.backDisabled = false;
-            
+            // else this.backDisabled = false;        
             
             this.getAllCustomerCode();
-            this.getAllProductPn();
-            
+            this.getAllProductPn();            
         },             
         methods:{
             async getAllCustomerCode(){
@@ -349,32 +375,42 @@ Vue.use(Vuetify)
             async addSalesOrder(){
 
                 debugger;
+                let loginAccount = localStorage.getItem('account');
+                let custId = this.selectedCustCode;
+                let postArr = [];                
+                this.addedProductItem.forEach(function(item) {
+                    let postObj = {};
+                    postObj.so = '';
+                    postObj.custId = custId;
+                    postObj.pn = item.productName;
+                    postObj.qty = item.productQty;
+                    postObj.status = 'S';
+                    postObj.creator = loginAccount;
+                    postArr.push(postObj);
+                });  
+                
                 //POST NEW PRODUCT          
-                // SalesOrderApi.post(`SalesOrder/AddSalesOrderAsync`,{
-                //     custId: this.addedProductItem.,
-                //     name: this.name,
-                //     title: this.title,
-                //     address: this.address,
-                //     phone: this.phone,
-                // })
-                // .then( (response) => {
-                //     if(response.data.isSuccess)
-                //     {
-                //         this.responseMsg = response.data.message;
-                //         this.showAlertOK();
-                //     }
-                //     else{
-                //         this.responseMsg = response.data.message;
-                //         this.showAlertNG();
-                //     }
-                // })
-                // .catch( (error) => {
-                //     if(error.response.status == 422)
-                //     {
-                //         this.responseMsg = error.response.data[Object.keys(error.response.data)]
-                //         this.showAlertNG();
-                //     }
-                // });
+                SalesOrderApi.post(`AddSalesOrderBulkAsync`, postArr)
+                .then( (response) => {
+                    debugger;
+                    if(response.data.isSuccess)
+                    {
+                        this.responseMsg = `Your Order: ${response.data.data[0]}`;      
+                        this.isStepsCompleted = true;                  
+                    }
+                    else{
+                        this.responseMsg = response.data.message;
+                        this.showAlertNG();
+                    }
+                })
+                .catch( (error) => {
+                    debugger;
+                    if(error.response.status == 422)
+                    {
+                        this.responseMsg = error.response.data[Object.keys(error.response.data)]
+                        this.showAlertNG();
+                    }
+                });
             },
             addProduct(){
                 this.valid = false;
@@ -455,9 +491,21 @@ Vue.use(Vuetify)
                     this.curr = n+2
                 }
             },
-            done() {
-                debugger;
+            done() {                
                 this.curr = 5
+                this.addSalesOrder();
+            },
+            countDownChangedOK(dismissCountDownOK) {
+                this.dismissCountDownOK = dismissCountDownOK
+            },
+            countDownChangedNG(dismissCountDownNG) {
+                this.dismissCountDownNG = dismissCountDownNG
+            },
+            showAlertOK() {
+                this.dismissCountDownOK = this.dismissSecs
+            },
+            showAlertNG() {
+                this.dismissCountDownNG = this.dismissSecs
             }
         }
     }

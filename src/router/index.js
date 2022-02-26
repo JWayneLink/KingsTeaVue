@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [{
   path: "/",
-  name: "Login Account",
-  component: () => import('../views/Account/LoginAccount.vue')
+  name: "Unauthorized Main Page",
+  component: () => import('../views/UnauthorizedMainPage.vue')
   },
   {
     path: "/account/login",
@@ -23,6 +23,11 @@ const routes = [{
     path: "/account/setting",
     name: "Setting Account",
     component: () => import('../views/Account/SettingAccount.vue')
+  },
+  {
+    path: "/account/maintenance",
+    name: "Maintenance Account",
+    component: () => import('../views/Account/MaintenanceAccount.vue')
   },
   {
     path: "/account/forgotpassword",
@@ -60,8 +65,8 @@ const routes = [{
     component: () => import('../views/Customer/MaintenanceCustomer.vue')
   },
   {
-    path: "/salesorder",
-    name: "SalesOrder",
+    path: "/salesorder/new",
+    name: "New SalesOrder",
     component: () => import('../views/SalesOrder/NewSalesOrderValid.vue')
   },
   {

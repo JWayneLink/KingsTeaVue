@@ -270,6 +270,7 @@ export default {
         },
         updateProduct(){
             // PUT UPDATE          
+            debugger;
             ProductApi.put(`UpdateProductAsync`,{
                 pn: this.selectedPn,
                 name: this.updateName,
@@ -385,11 +386,11 @@ export default {
             this.modalShow = true;
         },
         onRowSelected(items) {
-
+debugger;
             // toggle enable update button
             if(items.length != 0)    
             {
-                this.selectedPn = items[0].pn
+                this.selectedPn = items[0].productNumber
                 this.updateName = items[0].name
                 this.updateCategory = items[0].category
                 this.updateSize = items[0].size

@@ -397,7 +397,7 @@ export default {
             // toggle enable update button
             if(items.length != 0)    
             {
-                this.selectedCustId = items[0].custId
+                this.selectedCustId = items[0].customerCode
                 this.updateName = items[0].name
                 this.updateTitle = items[0].title
                 this.updateAddress = items[0].address

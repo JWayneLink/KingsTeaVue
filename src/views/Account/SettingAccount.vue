@@ -69,7 +69,7 @@
                         <b-icon icon="lock" aria-hidden="true" v-if="disabled == true"></b-icon>
                         <b-icon icon="unlock" aria-hidden="true" v-else>></b-icon>
                         </b-button>
-                    <b-button @click.prevent="confirmUpdate" variant="outline-secondary" style="float:right;">Confirm Update</b-button>
+                    <b-button @click.prevent="confirmUpdate" :disabled="disabled" variant="outline-secondary" style="float:right;">Confirm Update</b-button>
                 </b-card>
             </b-card-group>
             </b-col>            

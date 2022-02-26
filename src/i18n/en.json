@@ -51,5 +51,11 @@
         "MaintenanceCustomer": {
             "title": "Kings Tea Customer Maintenance"
         }
+    },
+    "SalesOrderPage":
+    {
+        "NewSalesOrder":{
+            "title":"New Kings Tea Sales Order"
+        }   
     }
 }

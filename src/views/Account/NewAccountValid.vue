@@ -3,7 +3,7 @@
         <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col></b-col>
-            <b-col><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('AccountPage.NewAccount.title')}}</h3></b-col>
+            <b-col><h3 style="font-style: italic;color:#bf9000;" >{{ $t('AccountPage.NewAccount.title')}}</h3></b-col>
             <b-col></b-col>
         </b-row>
         <b-row>

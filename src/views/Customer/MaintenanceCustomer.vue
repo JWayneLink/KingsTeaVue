@@ -3,7 +3,7 @@
         <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col cols="2"></b-col>
-            <b-col cols="8"><b-col cols="8"><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('CustomerPage.MaintenanceCustomer.title')}}</h3></b-col></b-col>
+            <b-col cols="8"><b-col cols="8"><h3 style="font-style:italic;color:#bf9000;" >{{ $t('CustomerPage.MaintenanceCustomer.title')}}</h3></b-col></b-col>
             <b-col cols="2"></b-col>
         </b-row>
         <b-row>
@@ -67,7 +67,7 @@
                 <b-table
                 :items="items"
                 :fields="fields"
-                :select-mode="selectMode"
+                :select-mode="selectMode"                
                 responsive="sm"
                 striped
                 hover
@@ -165,7 +165,7 @@ export default {
     data(){
         return {            
             fields: [                
-                    { key: 'custId'  },
+                    { key: 'customerCode'  },
                     { key: 'name' },
                     { key: 'title' },
                     { key: 'address' },
@@ -206,7 +206,7 @@ export default {
             let results = await CustomerApi.get(`GetAllCustomersAsync`);        
             results.data.data.forEach((element) => {
                 let itemObj = {};
-                itemObj.custId = element.custId;
+                itemObj.customerCode = element.custId;
                 itemObj.name = element.name;
                 itemObj.title = element.title;
                 itemObj.address = element.address;
@@ -232,7 +232,7 @@ export default {
                 {
                     results.data.data.forEach((element) => {
                         let itemObj = {};
-                        itemObj.custId = element.custId;
+                        itemObj.customerCode = element.custId;
                         itemObj.name = element.name;
                         itemObj.title = element.title;
                         itemObj.address = element.address;

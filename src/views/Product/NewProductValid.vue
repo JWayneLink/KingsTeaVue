@@ -3,7 +3,7 @@
         <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col></b-col>
-            <b-col><h3 style="font-style: italic;color:rgb(137, 30, 49);">{{ $t('ProductPage.NewProduct.title') }}</h3></b-col>
+            <b-col><h3 style="font-style: italic;color:#bf9000;">{{ $t('ProductPage.NewProduct.title') }}</h3></b-col>
             <b-col></b-col>
         </b-row>
         <b-row>
@@ -75,7 +75,7 @@
                         </b-input-group>
                         
                         <label for="iceRange" class="form-label" style="color:grey;">Ice</label>
-                        <b-input-group>
+                        <b-input-group>                            
                             <input type="range" class="form-range" id="iceRange"  v-model="ice" min="0" max="5">
                         </b-input-group>
 

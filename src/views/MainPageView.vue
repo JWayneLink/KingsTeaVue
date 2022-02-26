@@ -29,21 +29,21 @@
 
         <div class="mt-4">
             <b-card :img-src="require('../assets/KingsTeaPictures/Scene/Scene_1.jpg')" img-alt="Card image" img-left class="mb-3">
-            <b-card-text>
-                Some quick example text to build on the card and make up the bulk of the card's content.
+            <b-card-text style="font-weight: bold;color:grey;font-style:italic;">
+                Earn more Stars and even more Rewards with a $430 intro annual fee for your first year with the KingsTea® Rewards Visa® Card. Plus your Stars won’t expire – an exclusive KingsTea benefit for cardmembers. Now that’s Super Starifying.
             </b-card-text>
             </b-card>
 
             <b-card :img-src="require('../assets/KingsTeaPictures/Scene/Scene_2.jpg')" img-alt="Card image" img-right style="height:450px;">
-            <b-card-text>
-                Some quick example text to build on the card and make up the bulk of the card's content.
+            <b-card-text style="font-weight: bold;color:grey;font-style:italic;">
+                Go for the comforting flavors of a Pistachio Latte or the lively layers of an Iced Brown Sugar Oatmilk Shaken Espresso.
             </b-card-text>
             </b-card>
         </div>
         <div class="mt-4">
             <b-card :img-src="require('../assets/KingsTeaPictures/Scene/Scene_3.jpg')" img-alt="Card image" img-left class="mb-3">
-            <b-card-text>
-                Some quick example text to build on the card and make up the bulk of the card's content.
+            <b-card-text style="font-weight: bold;color:grey;font-style:italic;">
+                Join us as KingsTea recognize the everyday Black excellence of our partners (employees). Explore ways to help cultivate the next generation of excellence.
             </b-card-text>
             </b-card>
         </div>

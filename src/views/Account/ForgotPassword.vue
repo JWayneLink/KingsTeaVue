@@ -29,7 +29,7 @@
                         </b-alert>
                         
                         <!-- Change New Password -->
-                        <h3 style="font-style: italic;color:rgb(137, 30, 49);">{{ $t('AccountPage.ForgotPassowrd')}}</h3>
+                        <h3 style="font-style: italic;color:#bf9000;">{{ $t('AccountPage.ForgotPassowrd')}}</h3>
                         <div class="form-group">
                             <label>Account</label>
                             <input v-model="account" type="text" class="form-control form-control-lg" />
@@ -65,7 +65,8 @@ export default {
     },
     methods:{
         confirm(){
-            alert(123);
+            this.responseMsg = 'Resend password. Please check your E-mail.'
+            this.showAlertOK();
         },
         countDownChangedOK(dismissCountDownOK) {
             this.dismissCountDownOK = dismissCountDownOK

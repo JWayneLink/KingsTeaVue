@@ -2,12 +2,15 @@
 
 <div id="app1">
         <b-navbar type="dark" variant="secondary " >
+            <b-navbar-nav>                
+                <b-form-input size="sm" class="mr-sm-2" placeholder="Search Order" style="margin-left:20px;"></b-form-input>                
+            </b-navbar-nav>
             <b-navbar-nav  class="ms-auto">
-                <b-nav-item right>
+                <b-nav-item>
                     <b-button @click.prevent="signIp" variant="outline-light" >{{ $t('SignupBar.SignIn') }}</b-button>
                     <!-- <router-link to="/account/login"> {{ $t('SignupBar.SignIn') }} </router-link> -->
                 </b-nav-item>
-                <b-nav-item right>
+                <b-nav-item>
                     <b-button @click.prevent="signUp" variant="outline-dark" >{{ $t('SignupBar.SignUn') }}</b-button>
                     <!-- <router-link to="/account/new"> {{ $t('SignupBar.SignUn') }} </router-link> -->
                 </b-nav-item>

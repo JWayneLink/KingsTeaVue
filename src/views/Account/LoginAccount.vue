@@ -29,7 +29,7 @@
                     </b-alert>
                     
                     <!-- Login -->
-                    <h3 style="color:rgb(137, 30, 49);font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
+                    <h3 style="color:#bf9000;font-style: italic;">{{ $t('AccountPage.LoginTitle')}}</h3>
                     <div class="form-group">
                         <label>Account</label>
                         <input v-model="account" type="text" class="form-control form-control-lg" />

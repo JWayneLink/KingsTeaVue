@@ -3,7 +3,7 @@
         <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col cols="2"></b-col>            
-            <b-col cols="8"><h3 style="font-style: italic;color:rgb(137, 30, 49);" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
+            <b-col cols="8"><h3 style="font-style: italic;color:#bf9000;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
             <b-col cols="2"></b-col>
         </b-row>        
         <b-row>
@@ -68,7 +68,7 @@
                 :items="items"
                 :fields="fields"
                 :select-mode="selectMode"
-                responsive="sm"
+                responsive="sm"                
                 striped
                 hover
                 selectable                  
@@ -161,6 +161,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAsios from 'vue-axios'
+import ProductApi from "@/api/ProductApi.js";
 Vue.use(VueAsios, axios)
 
 export default {
@@ -169,7 +170,7 @@ export default {
             return {
                 // Note 'isActive' is left out and will not appear in the rendered table
                 fields: [                
-                    { key: 'pn'  },
+                    { key: 'productNumber'  },
                     { key: 'name' },
                     { key: 'category' },
                     { key: 'size' },
@@ -216,10 +217,10 @@ export default {
 
             // QUERY ALL PRODUCT
             this.items = [];
-            let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetAllProductsAsync`);
+            let results = await ProductApi.get(`GetAllProductsAsync`);
             results.data.data.forEach((element) => {
                 let itemObj = {};
-                itemObj.pn = element.pn;
+                itemObj.productNumber = element.pn;
                 itemObj.name = element.name;
                 itemObj.category = element.category;
                 itemObj.size = element.size;
@@ -241,13 +242,13 @@ export default {
             else
             {               
                 // QUERY SINGLE          
-                let results = await axios.get(`${process.env.VUE_APP_KTA_PRODUCT}GetSingleProductAsync?pn=${this.queryPn}`);
+                let results = await ProductApi.get(`GetSingleProductAsync?pn=${this.queryPn}`);
                 this.items = [];
                 if(results.data.isSuccess && results.data.data[0] != null)
                 {
                     results.data.data.forEach((element) => {
                         let itemObj = {};
-                        itemObj.pn = element.pn;
+                        itemObj.productNumber = element.pn;
                         itemObj.name = element.name;
                         itemObj.category = element.category;
                         itemObj.size = element.size;
@@ -269,7 +270,7 @@ export default {
         },
         updateProduct(){
             // PUT UPDATE          
-            axios.put(`${process.env.VUE_APP_KTA_PRODUCT}UpdateProductAsync`,{
+            ProductApi.put(`UpdateProductAsync`,{
                 pn: this.selectedPn,
                 name: this.updateName,
                 category: this.updateCategory,
@@ -297,7 +298,7 @@ export default {
             if(this.selectedPn !=  '' && confirm("Do you really want to delete?"))    
             {
                 // DELETE
-                axios.delete(`${process.env.VUE_APP_KTA_PRODUCT}DeleteProductAsync?pn=${this.selectedPn}`)
+                ProductApi.delete(`DeleteProductAsync?pn=${this.selectedPn}`)
                 .then( (response) => {
                     if(response.data.isSuccess)
                     {
@@ -321,8 +322,7 @@ export default {
             // Prevent modal from closing
             bvModalEvt.preventDefault()
             // Trigger submit handler
-            let validResult = this.handleSubmit();
-            debugger;
+            let validResult = this.handleSubmit();            
             if(validResult)
             {
                 this.updateProduct(); 
@@ -379,13 +379,7 @@ export default {
             }   
             else{
                 return true;
-            }         
-            // Push the name to submitted names
-            //this.submittedNames.push(this.name)
-            // Hide the modal manually
-            // this.$nextTick(() => {
-            // this.$bvModal.hide('modal-prevent-closing')
-            // });            
+            }          
         },
         showUpdateModal(){
             this.modalShow = true;

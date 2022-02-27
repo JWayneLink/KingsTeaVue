@@ -17,7 +17,7 @@
             ></b-carousel-slide>
 
             <b-carousel-slide
-            :img-src="require('../assets/KingsTeaPictures/Banner/3.jpg')"
+            :img-src="require('../assets/KingsTeaPictures/Banner/5.jpg')"
             ></b-carousel-slide>
 
             <b-carousel-slide

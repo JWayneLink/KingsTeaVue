@@ -47,7 +47,7 @@
         <b-row cols="2">
             <b-col cols="2"></b-col>
             <b-col cols="5">
-                 <b-button style="width:32%;" @click="clearSelected">Clear Selected</b-button>  
+                 <b-button style="width:32%;" variant="outline-secondary" @click="clearSelected">Clear Selected</b-button>  
             </b-col>
             <b-col cols="1">
                 <b-button  v-on:click.prevent="queryCustomer" variant="outline-primary">Query</b-button>                         
@@ -88,67 +88,65 @@
             <b-col cols="2"></b-col>
         </b-row>  
 
-<!-- Update Modal Start -->
-<b-modal
-    id="modal-center" 
-    ref="modal"
-    v-model="modalShow" 
-    centered title="Update Customer"    
-    @ok="handleUpdate"
->
-<form ref="form" @submit.stop.prevent="handleSubmit">
-    <!-- Disable Edit Customer Id -->
-    <b-input-group prepend="CustId" class="mb-2" >
-        <b-form-input disabled v-model="selectedCustId" aria-label="Pn" trim ></b-form-input>
-    </b-input-group>
+        <!-- Update Modal Start -->
+        <b-modal
+            id="modal-center" 
+            ref="modal"
+            v-model="modalShow" 
+            centered title="Update Customer"    
+            @ok="handleUpdate"
+        >
+        <form ref="form" @submit.stop.prevent="handleSubmit">
+            <!-- Disable Edit Customer Id -->
+            <b-input-group prepend="CustId" class="mb-2" >
+                <b-form-input disabled v-model="selectedCustId" aria-label="Pn" trim ></b-form-input>
+            </b-input-group>
 
-    <!-- Name required valid message -->
-    <b-form-group          
-        label-for="name-input"
-        invalid-feedback="Name is required"
-        :state="nameState"
-    >
-        <b-input-group prepend="Name" :state="nameState" class="mb-2">
-            <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
-        </b-input-group>
-    </b-form-group >
+            <!-- Name required valid message -->
+            <b-form-group          
+                label-for="name-input"
+                invalid-feedback="Name is required"
+                :state="nameState"
+            >
+                <b-input-group prepend="Name" :state="nameState" class="mb-2">
+                    <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
+                </b-input-group>
+            </b-form-group >
 
-    <!-- Title required valid message -->
-    <b-form-group          
-        label-for="title-input"
-        invalid-feedback="Title is required"
-        :state="titleState"
-    >
-        <b-input-group prepend="Title" :state="titleState" class="mb-2">
-            <b-form-input id="title-input"  v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
-        </b-input-group>
-    </b-form-group>
+            <!-- Title required valid message -->
+            <b-form-group          
+                label-for="title-input"
+                invalid-feedback="Title is required"
+                :state="titleState"
+            >
+                <b-input-group prepend="Title" :state="titleState" class="mb-2">
+                    <b-form-input id="title-input"  v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
+                </b-input-group>
+            </b-form-group>
 
-    <!-- Address required valid message -->
-    <b-form-group          
-        label-for="address-input"
-        invalid-feedback="Address is required"
-        :state="addressState"
-    >
-        <b-input-group prepend="Address" :state="addressState" class="mb-2">
-            <b-form-input id="address-input"  v-model="updateAddress" :state="addressState" required aria-label="Address" trim></b-form-input>
-        </b-input-group>
-    </b-form-group>
+            <!-- Address required valid message -->
+            <b-form-group          
+                label-for="address-input"
+                invalid-feedback="Address is required"
+                :state="addressState"
+            >
+                <b-input-group prepend="Address" :state="addressState" class="mb-2">
+                    <b-form-input id="address-input"  v-model="updateAddress" :state="addressState" required aria-label="Address" trim></b-form-input>
+                </b-input-group>
+            </b-form-group>
 
-    <!-- Phone required valid message -->
-    <b-form-group          
-        label-for="phone-input"
-        invalid-feedback="Phone is required"
-        :state="phoneState"
-    >
-        <b-input-group prepend="Phone" :state="phoneState" class="mb-2">
-            <b-form-input id="phone-input"  v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
-        </b-input-group>
-    </b-form-group>
-
-
-</form> 
-</b-modal>
+            <!-- Phone required valid message -->
+            <b-form-group          
+                label-for="phone-input"
+                invalid-feedback="Phone is required"
+                :state="phoneState"
+            >
+                <b-input-group prepend="Phone" :state="phoneState" class="mb-2">
+                    <b-form-input id="phone-input"  v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
+                </b-input-group>
+            </b-form-group>
+        </form> 
+        </b-modal>
 
 </b-container>
 </template>
@@ -382,13 +380,7 @@ export default {
             }
             else{
                 return true;
-            }
-            // Push the name to submitted names
-            //this.submittedNames.push(this.name)
-            // Hide the modal manually
-            // this.$nextTick(() => {
-            // this.$bvModal.hide('modal-prevent-closing')
-            // });        
+            }      
         },
         showUpdateModal(){
             this.modalShow = true;

@@ -47,7 +47,7 @@
         <b-row cols="2">
             <b-col cols="2"></b-col>
             <b-col cols="5">
-                 <b-button style="width:32%;"   @click="clearSelected">Clear Selected</b-button>  
+                 <b-button style="width:32%;" variant="outline-secondary" @click="clearSelected">Clear Selected</b-button>  
             </b-col>
             <b-col cols="1">
                 <b-button  v-on:click.prevent="queryProduct" variant="outline-primary">Query</b-button>                         
@@ -269,8 +269,7 @@ export default {
             }
         },
         updateProduct(){
-            // PUT UPDATE          
-            debugger;
+            // PUT UPDATE                      
             ProductApi.put(`UpdateProductAsync`,{
                 pn: this.selectedPn,
                 name: this.updateName,
@@ -386,7 +385,6 @@ export default {
             this.modalShow = true;
         },
         onRowSelected(items) {
-debugger;
             // toggle enable update button
             if(items.length != 0)    
             {

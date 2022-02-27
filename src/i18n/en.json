@@ -33,7 +33,7 @@
             "title": "New Kings Tea Account"
         },
         "MaintenanceProduct": {
-            "title": "Kings Tea Account Maintenance"
+            "title": "Kings Tea Account Management"
         },
         "LoginTitle":"Kings Tea Shop Sign In",
         "ForgotPassowrd":"Forgot Passowrd"
@@ -43,7 +43,7 @@
             "title": "New Kings Tea Product"
         },
         "MaintenanceProduct": {
-            "title": "Kings Tea Product Maintenance"
+            "title": "Kings Tea Product Management"
         },
         "InformationProduct":{
             "title":"Kings Tea Product Information"
@@ -54,7 +54,7 @@
             "title": "New Kings Tea Customer"
         },
         "MaintenanceCustomer": {
-            "title": "Kings Tea Customer Maintenance"
+            "title": "Kings Tea Customer Management"
         }
     },
     "SalesOrderPage":

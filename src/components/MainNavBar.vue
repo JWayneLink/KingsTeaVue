@@ -44,12 +44,6 @@
             <!-- Right Area -->
             <b-navbar-nav class="ms-auto">
                 <!-- Navbar dropdowns -->
-                <!-- Languages -->
-                <b-nav-item-dropdown v-bind:text="$t('NavBar.Lang.title')" >
-                    <b-dropdown-item v-bind:data-lang="lan" href="#" right v-on:click="changelanguage"
-                        v-for="lan in $t('NavBar.Lang.langs')" :key="lan">{{ lan }}
-                    </b-dropdown-item>
-                </b-nav-item-dropdown>
 
                 <!-- Account -->
                 <b-nav-item-dropdown v-bind:text="$t('NavBar.Account.title')">                    
@@ -66,6 +60,13 @@
                          <router-link style="color:black;" to="/account/login">{{$t('NavBar.Account.actions[3]')}}</router-link>
                     </b-dropdown-item>
                 </b-nav-item-dropdown>
+                <!-- Languages -->
+                <b-nav-item-dropdown v-bind:text="$t('NavBar.Lang.title')" >
+                    <b-dropdown-item v-bind:data-lang="lan" href="#" right v-on:click="changelanguage"
+                        v-for="lan in $t('NavBar.Lang.langs')" :key="lan">{{ lan }}
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
 
                 <b-nav-item>                    
                     <b-avatar variant="outline-primary" ></b-avatar>

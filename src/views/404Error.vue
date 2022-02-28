@@ -1,6 +1,6 @@
 <template>
 <b-container>
-    <b-row style="height:36px;"></b-row>
+    <b-row style="height:76px;"></b-row>
     <b-row>
         <b-col cols="2"></b-col>
         <b-col cols="8">

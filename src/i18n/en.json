@@ -16,7 +16,7 @@
         },
         "SalesOrder": {
             "title": "Sales Order",
-            "actions": ["New Sales Order"]
+            "actions": ["New Sales Order","Sales Order Information"]
         },
         "Account": {
             "title":"Account",

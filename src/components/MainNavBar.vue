@@ -35,6 +35,9 @@
                     <b-dropdown-item>
                         <router-link style="color:black;" to="/salesorder/new">{{ $t('NavBar.SalesOrder.actions[0]')}}</router-link>
                     </b-dropdown-item>
+                    <b-dropdown-item>
+                        <router-link style="color:black;" to="/salesorder/information">{{ $t('NavBar.SalesOrder.actions[1]')}}</router-link>
+                    </b-dropdown-item>
                 </b-nav-item-dropdown>
 
       

@@ -102,18 +102,18 @@
                 :state="nameState"
             >
                 <b-input-group prepend="Name" :state="nameState" class="mb-2">
-                    <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
+                    <b-form-input id="name-input" placeholder="Enter your name" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
                 </b-input-group>
             </b-form-group >
 
-            <!-- Title required valid message -->
+            <!-- Email required valid message -->
             <b-form-group          
                 label-for="email-input"
                 invalid-feedback="Email is required"
                 :state="emailState"
             >
                 <b-input-group prepend="Email" :state="emailState" class="mb-2">
-                    <b-form-input id="email-input"  v-model="updateEmail" :state="emailState" required aria-label="Email" trim></b-form-input>
+                    <b-form-input id="email-input" placeholder="Enter your email" v-model="updateEmail" :state="emailState" required aria-label="Email" trim></b-form-input>
                 </b-input-group>
             </b-form-group>
 
@@ -124,7 +124,7 @@
                 :state="phoneState"
             >
                 <b-input-group prepend="Phone" :state="phoneState" class="mb-2">
-                    <b-form-input id="phone-input"  v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
+                    <b-form-input id="phone-input" placeholder="Enter your phone" v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
                 </b-input-group>
             </b-form-group>
         </form> 
@@ -279,6 +279,7 @@ export default {
         },
         checkFormValidity() {
             const Valid = this.$refs.form.checkValidity()
+            debugger;
             if (this.updateName == '')
             {
                 this.nameState = Valid;                

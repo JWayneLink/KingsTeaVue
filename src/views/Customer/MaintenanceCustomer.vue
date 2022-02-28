@@ -33,7 +33,7 @@
 
                 <!-- Customer Query -->
                 <b-input-group prepend="Customer Code" class="mt-3">
-                    <b-form-input v-model="queryCustCode"></b-form-input>
+                    <b-form-input v-model="queryCustCode" placeholder="Search Customer Code"></b-form-input>
                     <b-input-group-append>
                     <b-button @click="querySingleCustomer" variant="outline-success">Query</b-button>
                     </b-input-group-append>
@@ -109,7 +109,7 @@
                 :state="nameState"
             >
                 <b-input-group prepend="Name" :state="nameState" class="mb-2">
-                    <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
+                    <b-form-input id="name-input" placeholder="Enter your email" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
                 </b-input-group>
             </b-form-group >
 
@@ -120,7 +120,7 @@
                 :state="titleState"
             >
                 <b-input-group prepend="Title" :state="titleState" class="mb-2">
-                    <b-form-input id="title-input"  v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
+                    <b-form-input id="title-input" placeholder="Enter your title" v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
                 </b-input-group>
             </b-form-group>
 
@@ -131,7 +131,7 @@
                 :state="addressState"
             >
                 <b-input-group prepend="Address" :state="addressState" class="mb-2">
-                    <b-form-input id="address-input"  v-model="updateAddress" :state="addressState" required aria-label="Address" trim></b-form-input>
+                    <b-form-input id="address-input" placeholder="Enter your address" v-model="updateAddress" :state="addressState" required aria-label="Address" trim></b-form-input>
                 </b-input-group>
             </b-form-group>
 
@@ -142,7 +142,7 @@
                 :state="phoneState"
             >
                 <b-input-group prepend="Phone" :state="phoneState" class="mb-2">
-                    <b-form-input id="phone-input"  v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
+                    <b-form-input id="phone-input" placeholder="Enter your phone" v-model="updatePhone" :state="phoneState" required aria-label="Phone" trim></b-form-input>
                 </b-input-group>
             </b-form-group>
         </form> 

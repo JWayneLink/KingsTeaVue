@@ -33,7 +33,7 @@
 
                 <!-- Product Query -->
                 <b-input-group prepend="Product" class="mt-3">
-                    <b-form-input v-model="queryPn"></b-form-input>
+                    <b-form-input v-model="queryPn" placeholder="Search Product Number"></b-form-input>
                     <b-input-group-append>
                     <b-button @click="querySingleProduct" variant="outline-success">Query</b-button>
                     </b-input-group-append>
@@ -102,7 +102,7 @@
           :state="nameState"
         >
             <b-input-group prepend="Name" :state="nameState" class="mb-2">
-                <b-form-input id="name-input" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
+                <b-form-input id="name-input" placeholder="Enter your name" v-model="updateName" :state="nameState" required aria-label="Name" trim></b-form-input>
             </b-input-group>
         </b-form-group >
 
@@ -113,7 +113,7 @@
           :state="categoryState"
         >
             <b-input-group prepend="Category" :state="categoryState" class="mb-2">
-                <b-form-input id="category-input"  v-model="updateCategory" :state="categoryState" required aria-label="Category" trim></b-form-input>
+                <b-form-input id="category-input" placeholder="Enter your category" v-model="updateCategory" :state="categoryState" required aria-label="Category" trim></b-form-input>
             </b-input-group>
         </b-form-group>
 
@@ -145,7 +145,7 @@
           :state="priceState"
         >
             <b-input-group prepend="Price" :state="priceState" class="mb-2">
-                <b-form-input id="price-input" v-model="updatePrice" :state="priceState" required aria-label="Price" trim></b-form-input>
+                <b-form-input id="price-input" placeholder="Enter your price" v-model="updatePrice" :state="priceState" required aria-label="Price" trim></b-form-input>
             </b-input-group>
         </b-form-group>
 

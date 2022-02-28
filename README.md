@@ -4,7 +4,7 @@
 <H2> Vue 2.6 framework Frontend WEB UI</H2>
 
 
-<H3>Skills that I used</H3>
+<H3>Skills that I used in this project</H3>
 
 <ul>
   <li>
@@ -32,3 +32,5 @@
     npm install vue-typeahead-bootstrap --save
   </li>
 </ul>
+
+<HR>

@@ -50,6 +50,8 @@
 <H4>MAIN PAGE CAROUSEL BANNER</H4>
   
 ![image](https://user-images.githubusercontent.com/40432032/155996344-d21b34a8-bd0b-43e4-8d30-3382712cfd23.png)
+![image](https://user-images.githubusercontent.com/40432032/155997833-25c92a06-093e-448c-84c6-e6176fbbb5f8.png)
+
 
 <H4>CREATE NEW PRODUCT</H4>
   

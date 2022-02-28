@@ -34,3 +34,12 @@
 </ul>
 
 <HR>
+  
+<H4>LOGIN</H4>
+  
+![image](https://user-images.githubusercontent.com/40432032/155995707-37d3cde8-26fc-469e-af82-bf2cd9ceaf3e.png)
+  
+<H4>FORGOT PASSWORD</H4>
+![image](https://user-images.githubusercontent.com/40432032/155995804-3b62b897-293d-43bc-b857-eb748db75a2c.png)
+
+

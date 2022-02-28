@@ -2,12 +2,6 @@
 
 <template>
     <div id="app">
-        <!-- <b-row style="height:36px;"></b-row>
-        <b-row>
-            <b-col></b-col>
-            <b-col><h3 style="font-style: italic;color:#bf9000;">{{ $t('SalesOrderPage.NewSalesOrder.title') }}</h3></b-col>
-            <b-col></b-col>
-        </b-row> -->
         <v-app>
             <v-container>
                 <!-- Success Alert -->

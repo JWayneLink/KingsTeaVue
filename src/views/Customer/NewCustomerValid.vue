@@ -39,15 +39,35 @@
                             </v-text-field>
                         </validation-provider>
 
-                        <validation-provider v-slot="{ errors }" name="Name" rules="required|max:10">
+                        <validation-provider v-slot="{ errors }" name="Name" rules="required|max:40">
                             <v-text-field v-model="name" :counter="10" :error-messages="errors" label="Name" required>
                             </v-text-field>
                         </validation-provider>
 
-                        <validation-provider v-slot="{ errors }" name="Title" rules="required|max:10">
-                            <v-text-field v-model="title" :counter="10" :error-messages="errors" label="Title" required>
-                            </v-text-field>
-                        </validation-provider>
+                        <label for="btn-radios-1" class="form-label" style="color:grey;">Title</label>
+                        <v-radio-group
+                        id="btn-radios-1"
+                        v-model="title"
+                        row
+                        >
+                        <v-radio
+                            label="Mr."
+                            value="Mr."
+                        ></v-radio>
+                        <v-radio
+                            label="Mrs."
+                            value="Mrs."
+                        ></v-radio>
+                            <v-radio
+                            label="Miss."
+                            value="Miss."
+                        ></v-radio>
+                            <v-radio
+                            label="Ms."
+                            value="Ms."
+                        ></v-radio>
+                        </v-radio-group>
+
 
                         <validation-provider v-slot="{ errors }" name="Address" rules="required|max:50">
                             <v-text-field v-model="address" :counter="50" :error-messages="errors" label="Address" required>

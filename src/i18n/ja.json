@@ -1,19 +1,74 @@
 {
     "title": "This is Japanese Message",
+    "SignupBar":{
+        "SignIn": "サインイン",
+        "SignUn":"サインアップ",
+        "Search": "探す"
+    },
     "NavBar":{
         "Home":"ホーム",
-        "Product":"プロダクト",
-        "Customer":"クライアント",
-        "SalesOrder":"販売注文",
-        "Account":
-        {
+        "Product":{
+            "title": "プロダクト",
+            "actions": ["新製品を作成する", "製品管理", "商品情報"]
+        },
+        "Customer": {
+            "title":"クライアント",
+            "actions": ["新しい顧客を作成する","顧客管理"]
+        },
+        "SalesOrder": {
+            "title": "販売注文",
+            "actions": ["新しい販売注文を作成する","受注情報"]
+        },
+        "Account": {
             "title":"アカウント",
-            "actions":["新しいアカウント","ログインアカウント","セットアップ"]
+            "actions":["新しいアカウントを作成する","アカウント","設定", "サインアウト"]
         },
         "Lang":
             {
-                "title":"言語",
-                "langs":["EN","ZH","JA"]
+                "title":"Lang",
+                "langs":["英語","中國語","日本語"]
             }
+    },
+    "AccountPage":{
+        "NewAccount":{
+            "title": "キングスティー アカウント"
+        },
+        "MaintenanceProduct": {
+            "title": "キングスティー アカウント"
+        },
+        "LoginTitle":"キングスティー サインイン",
+        "ForgotPassowrd":"パスワードを再設定する"
+    },
+    "ProductPage":{
+        "NewProduct": {
+            "title": "キングスティー 新製品を作成する"
+        },
+        "MaintenanceProduct": {
+            "title": "キングスティー 製品管理"
+        },
+        "InformationProduct":{
+            "title":"キングスティー 商品情報"
+        }
+    },
+    "CustomerPage":{
+        "NewCustomer":{
+            "title": "キングスティー 新しい顧客を作成する"
+        },
+        "MaintenanceCustomer": {
+            "title": "キングスティー 顧客管理"
+        }
+    },
+    "SalesOrderPage":
+    {
+        "NewSalesOrder":{
+            "title":"キングスティー 販売注文"
+        },
+        "SalesOrderInformation":{
+            "title":"キングスティー 受注情報"
+        },
+        "ReadOnlySalesOrder":{
+            "title":"キングスティー 販売注文 クイック検索ビュー",
+            "OrderNumber":"検索販売注文"
+        }
     }
 }

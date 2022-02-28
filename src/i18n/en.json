@@ -2,7 +2,8 @@
     "title": "This is English Message",
     "SignupBar":{
         "SignIn": "Sign in",
-        "SignUn":"Sign up"
+        "SignUn":"Sign up",
+        "Search": "Search"
     },
     "NavBar":{
         "Home":"Home",
@@ -61,6 +62,13 @@
     {
         "NewSalesOrder":{
             "title":"New Kings Tea Sales Order"
-        }   
+        },
+        "SalesOrderInformation":{
+            "title":"Kings Tea Sales Order Information"
+        },
+        "ReadOnlySalesOrder":{
+            "title":"Quick Query Sales Order View",
+            "OrderNumber":"Your Order Number"
+        }
     }
 }

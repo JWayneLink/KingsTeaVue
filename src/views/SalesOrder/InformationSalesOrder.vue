@@ -3,7 +3,7 @@
         <b-row style="height:36px;"></b-row>
         <b-row>
             <b-col cols="2"></b-col>            
-            <b-col cols="8"><h3 style="font-style: italic;color:#bf9000;" >{{ $t('ProductPage.MaintenanceProduct.title')}}</h3></b-col>
+            <b-col cols="8"><h3 style="font-style: italic;color:#bf9000;" >{{ $t('SalesOrderPage.SalesOrderInformation.title') }}</h3></b-col>
             <b-col cols="2"></b-col>
         </b-row>        
         <b-row>
@@ -69,7 +69,6 @@
     </v-data-table>
   </v-container>
 </template>
-
 
 
 <script>

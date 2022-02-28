@@ -44,10 +44,29 @@
                             </v-text-field>
                         </validation-provider>
 
-                        <validation-provider v-slot="{ errors }" name="category" rules="required|max:10">
-                            <v-text-field v-model="category" :counter="10" :error-messages="errors" label="Category" required>
-                            </v-text-field>
-                        </validation-provider>
+                        <label for="btn-radios-1" class="form-label" style="color:grey;">Category</label>
+                        <v-radio-group
+                        id="btn-radios-1"
+                        v-model="category"
+                        row
+                        >
+                        <v-radio
+                            label="Coffee"
+                            value="Coffee"
+                        ></v-radio>
+                        <v-radio
+                            label="Tea"
+                            value="Tea"
+                        ></v-radio>
+                            <v-radio
+                            label="Juice"
+                            value="Juice"
+                        ></v-radio>
+                            <v-radio
+                            label="Caffeine-free"
+                            value="Caffeine-free"
+                        ></v-radio>
+                        </v-radio-group>
 
                         <label for="btn-radios-1" class="form-label" style="color:grey;">Size</label>
                         <b-input-group>

@@ -1,19 +1,74 @@
 {
-    "title": "This is Chinese Message",
-    "NavBar":{
+  "title": "This is Chinese Message",
+  "SignupBar":{
+      "SignIn": "登入",
+      "SignUn":"註冊帳號",
+      "Search": "查詢"
+  },
+  "NavBar":{
       "Home":"首頁",
-      "Product":"產品",
-      "Customer":"客戶",
-      "SalesOrder":"訂單",
-      "Account":
-      {
+      "Product":{
+          "title": "產品",
+          "actions": ["新增產品", "產品資訊管理", "產品資訊"]
+      },
+      "Customer": {
+          "title":"顧客",
+          "actions": ["新增客戶","客戶資訊管理"]
+      },
+      "SalesOrder": {
+          "title": "訂單",
+          "actions": ["新增訂單","訂單資訊"]
+      },
+      "Account": {
           "title":"帳戶",
-          "actions":["新增帳戶","登入","設定"]
+          "actions":["新增帳戶","帳戶資訊管理","設定", "登出"]
       },
       "Lang":
-        {
-            "title":"語言",
-            "langs":["英文","中文","日文"]
-        }
-  }    
+          {
+              "title":"語言",
+              "langs":["英文","中文","日文"]
+          }
+  },
+  "AccountPage":{
+      "NewAccount":{
+          "title": "金順口茶 新增帳戶"
+      },
+      "MaintenanceProduct": {
+          "title": "金順口茶 帳戶資訊管理"
+      },
+      "LoginTitle":"金順口茶 登入",
+      "ForgotPassowrd":"重置密碼"
+  },
+  "ProductPage":{
+      "NewProduct": {
+          "title": "金順口茶 新增產品"
+      },
+      "MaintenanceProduct": {
+          "title": "金順口茶 產品資訊管理"
+      },
+      "InformationProduct":{
+          "title":"金順口茶 產品詳細資訊"
+      }
+  },
+  "CustomerPage":{
+      "NewCustomer":{
+          "title": "金順口茶 新增客戶"
+      },
+      "MaintenanceCustomer": {
+          "title": "金順口茶 客戶資訊管理"
+      }
+  },
+  "SalesOrderPage":
+  {
+      "NewSalesOrder":{
+          "title":"金順口茶 新增訂單"
+      },
+      "SalesOrderInformation":{
+          "title":"金順口茶 訂單詳細資訊"
+      },
+      "ReadOnlySalesOrder":{
+          "title":"金順口茶 快速查詢功能",
+          "OrderNumber":"查詢訂單"
+      }
+  }
 }

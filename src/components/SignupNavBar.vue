@@ -2,9 +2,20 @@
 
 <div id="app1">
         <b-navbar type="dark" variant="secondary " >
-            <b-navbar-nav>                
-                <b-form-input size="sm" class="mr-sm-2" placeholder="Search Order" style="margin-left:20px;"></b-form-input>                
+            <b-navbar-nav>   
+                <vue-typeahead-bootstrap
+                :data="datasource"
+                v-model="querySalesOrder"
+                v-on:keyup="SearchAutoCompleate"
+                placeholder="Search Sales Order"
+                />             
+                <!-- <b-form-input v-model="querySalesOrder" size="sm" class="mr-sm-2" placeholder="Search Sales Order" style="margin-left:20px;"></b-form-input>                 -->
             </b-navbar-nav>
+            <b-navbar-nav> 
+                <b-nav-item>
+                    <b-button @click.prevent="search" variant="outline-success" >{{ $t('SignupBar.Search') }}</b-button>
+                </b-nav-item>
+            </b-navbar-nav> 
             <b-navbar-nav  class="ms-auto">
                 <b-nav-item>
                     <b-button @click.prevent="signIp" variant="outline-light" >{{ $t('SignupBar.SignIn') }}</b-button>
@@ -23,12 +34,13 @@
 </template>
 
 <script>
-    // import NavBar
-    import Vue from 'vue'
-    import {
-        BootstrapVue,
-        IconsPlugin
-    } from 'bootstrap-vue'
+import VueTypeaheadBootstrap from 'vue-typeahead-bootstrap';
+import SalesOrderApi from '@/api/SalesOrderApi.js'
+import Vue from 'vue'
+import {
+    BootstrapVue,
+    IconsPlugin
+} from 'bootstrap-vue'
 
     // Install BootstrapVue
     Vue.use(BootstrapVue)
@@ -39,13 +51,15 @@
         name: 'MainNavBar',
         data() {
             return {
-                isLogged: 'false'
+                datasource:[],
+                isLogged: 'false',
+                querySalesOrder:''
             }
         },
-        components: {
-
-        },
-        created () {
+        components:{
+            VueTypeaheadBootstrap
+        },  
+        mounted () {
 
         },
         methods: {
@@ -83,7 +97,24 @@
                 //將所選語系代碼存入localStorage
                 localStorage.setItem('footmark-lang', lang);
 
-            }
+            },
+            search(){                
+                let id = this.querySalesOrder
+                this.$router.push({ 
+                    name: 'Readonly SalesOrder', // 要事先在 router 那邊命名你的元件
+                    params: { id } 
+                })
+            },
+            SearchAutoCompleate : async function(){        
+                // key on event to query so number
+                this.datasource = [];
+                let results = await SalesOrderApi.get(`GetSalesOrderListAsync?so=${this.querySalesOrder}`);             
+                let soComplete = [];
+                results.data.data.forEach(element => {
+                    soComplete.push(element);
+                });            
+                this.datasource = soComplete;
+            },
         }
     }
 </script>

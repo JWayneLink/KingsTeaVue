@@ -75,6 +75,11 @@ const routes = [{
     component: () => import('../views/SalesOrder/InformationSalesOrder.vue')
   },
   {
+    path: "/salesorder/information/:id",
+    name: "Readonly SalesOrder",
+    component: () => import('../views/SalesOrder/ReadonlySalesOrder.vue')
+  },
+  {
     path: "/error",
     name: "Error",
     component: () => import('../views/Error.vue')
@@ -111,6 +116,12 @@ router.beforeEach((to, from, next)=>{
         to.name == 'Error' ||
         to.name == '404Error'
       )
+      {
+        next({
+          redirect:to.fullPath
+        })
+      }
+      else if( to.name == "Readonly SalesOrder")
       {
         next({
           redirect:to.fullPath

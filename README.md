@@ -51,6 +51,10 @@
   
 ![image](https://user-images.githubusercontent.com/40432032/155996344-d21b34a8-bd0b-43e4-8d30-3382712cfd23.png)
 ![image](https://user-images.githubusercontent.com/40432032/155998034-c75e3b44-4ce3-44b9-9a75-3b5a5c29a467.png)
+  
+![image](https://user-images.githubusercontent.com/40432032/155998374-75a07477-b61c-44c5-9429-94e6476014a1.png)
+![image](https://user-images.githubusercontent.com/40432032/155998402-3e2e8677-4416-4544-aad2-774dca81ce87.png)
+
 
 
 <H4>CREATE NEW PRODUCT</H4>

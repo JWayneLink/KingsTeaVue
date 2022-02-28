@@ -62,9 +62,8 @@
         </b-row> 
 
         <!-- Account Table -->
-        <b-row>
-            <b-col cols="2"></b-col>
-            <b-col cols="8">
+        <b-row>            
+            <b-col cols="12">
                 <b-table
                 :items="items"
                 :fields="fields"
@@ -76,8 +75,7 @@
                 ref="selectableTable"      
                 @row-selected="onRowSelected"
                 ></b-table>    
-            </b-col>
-            <b-col cols="2"></b-col>
+            </b-col>            
         </b-row>  
 
         

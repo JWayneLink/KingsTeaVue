@@ -61,9 +61,8 @@
         </b-row> 
 
         <!-- Product Table -->
-        <b-row>
-            <b-col cols="2"></b-col>
-            <b-col cols="8">
+        <b-row>            
+            <b-col cols="12">
                 <b-table
                 :items="items"
                 :fields="fields"
@@ -75,11 +74,8 @@
                 ref="selectableTable"      
                 @row-selected="onRowSelected"
                 ></b-table>                
-            </b-col>
-            <b-col cols="2"></b-col>
-        </b-row>  
-        
-
+            </b-col>            
+        </b-row>          
 
 <!-- Update Modal Start -->
 <b-modal 
@@ -109,13 +105,33 @@
         <!-- Category required valid message -->
         <b-form-group          
           label-for="category-input"
-          invalid-feedback="Category is required"
-          :state="categoryState"
         >
-            <b-input-group prepend="Category" :state="categoryState" class="mb-2">
-                <b-form-input id="category-input" placeholder="Enter your category" v-model="updateCategory" :state="categoryState" required aria-label="Category" trim></b-form-input>
+            <b-input-group prepend="Category"  class="mb-2">
+                <v-radio-group
+                id="btn-radios-1"
+                v-model="updateCategory"
+                row
+                style="margin-left:10px;"
+                >
+                    <v-radio
+                        label="Coffee"
+                        value="Coffee"
+                    ></v-radio>
+                    <v-radio
+                        label="Tea"
+                        value="Tea"
+                    ></v-radio>
+                        <v-radio
+                        label="Juice"
+                        value="Juice"
+                    ></v-radio>
+                        <v-radio
+                        label="Caffeine-free"
+                        value="Caffeine-free"
+                    ></v-radio>
+                </v-radio-group>
             </b-input-group>
-        </b-form-group>
+        </b-form-group>                            
 
         <!-- Size update -->
             <b-input-group prepend="Size" class="mb-2">
@@ -181,8 +197,7 @@ export default {
                     { key: 'cdt' }
                 ],
                 items: [],
-                nameState: null, // null or false is invalid, true is valid
-                categoryState: null, // null or false is invalid, true is valid 
+                nameState: null, // null or false is invalid, true is valid                
                 priceState: null, // null or false is invalide, true is valid
                 updateName:'',
                 updateCategory:'',
@@ -334,23 +349,10 @@ export default {
             if (this.updateName == '')
             {
                 this.nameState = Valid;                
-                if(this.updateCategory == '') { this.categoryState = Valid; }
-                else { this.categoryState = true; }
 
                 if(this.updatePrice == 0) { this.priceState = Valid; }
                 else { this.priceState = true;}
 
-                return Valid
-            }
-            else if (this.updateCategory == '')
-            {
-                this.categoryState = Valid;  
-                if(this.updateName == '') { this.nameState = Valid; }
-                else { this.nameState = true; }
-                
-                if(this.updatePrice == 0) { this.priceState = Valid;}
-                else{ this.priceState = true; }
-                
                 return Valid
             }
             else if(this.updatePrice == 0)
@@ -359,15 +361,11 @@ export default {
                 if (this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
 
-                if(this.updateCategory == '') { this.categoryState = Valid; }
-                else{ this.categoryState = true; }
-
                 return Valid
             }
             else
             {
-                this.nameState = Valid;  
-                this.categoryState = Valid;  
+                this.nameState = Valid;   
                 this.priceState = Valid;  
                 return Valid
             }            

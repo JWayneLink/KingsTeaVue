@@ -61,9 +61,8 @@
         </b-row> 
 
         <!-- Customer Table -->
-        <b-row>
-            <b-col cols="2"></b-col>
-            <b-col cols="8">
+        <b-row>            
+            <b-col cols="12">
                 <b-table
                 :items="items"
                 :fields="fields"
@@ -75,17 +74,7 @@
                 ref="selectableTable"      
                 @row-selected="onRowSelected"
                 ></b-table>    
-<!-- 
-    
-  <v-data-table
-    :headers="items"
-    :items="fields"
-    :items-per-page="5"
-    class="elevation-1"
-  ></v-data-table> -->
-        
             </b-col>
-            <b-col cols="2"></b-col>
         </b-row>  
 
         <!-- Update Modal Start -->
@@ -113,17 +102,37 @@
                 </b-input-group>
             </b-form-group >
 
-            <!-- Title required valid message -->
             <b-form-group          
                 label-for="title-input"
-                invalid-feedback="Title is required"
-                :state="titleState"
             >
-                <b-input-group prepend="Title" :state="titleState" class="mb-2">
-                    <b-form-input id="title-input" placeholder="Enter your title" v-model="updateTitle" :state="titleState" required aria-label="Title" trim></b-form-input>
-                </b-input-group>
+            <b-input-group prepend="Title" class="mb-2">
+                <v-radio-group
+                id="btn-radios-1"
+                v-model="updateTitle"
+                row
+                style="margin-left:10px;"
+                >
+                <v-radio
+                    label="Mr."
+                    value="Mr."
+                ></v-radio>
+                <v-radio
+                    label="Mrs."
+                    value="Mrs."
+                ></v-radio>
+                    <v-radio
+                    label="Miss."
+                    value="Miss."
+                ></v-radio>
+                    <v-radio
+                    label="Ms."
+                    value="Ms."
+                ></v-radio>
+                </v-radio-group>
+            </b-input-group>            
+            
+            
             </b-form-group>
-
             <!-- Address required valid message -->
             <b-form-group          
                 label-for="address-input"
@@ -172,8 +181,7 @@ export default {
                     { key: 'cdt' }
                 ],
                 items: [],
-                nameState: null, // null or false is invalid, true is valid
-                titleState: null, // null or false is invalid, true is valid 
+                nameState: null, // null or false is invalid, true is valid                
                 addressState: null, // null or false is invalide, true is valid
                 phoneState: null, // null or false is invalide, true is valid
                 updateName:'',
@@ -311,8 +319,6 @@ export default {
             if (this.updateName == '')
             {
                 this.nameState = Valid;                
-                if( this.updateTitle == '') { this.titleState = Valid; }
-                else { this.titleState = true; }
 
                 if(this.updateAddress == '') { this.addressState = Valid; }
                 else { this.addressState = true;}
@@ -322,28 +328,11 @@ export default {
 
                 return Valid
             }
-            else if (this.updateTitle == '')
-            {
-                this.titleState = Valid;  
-                if(this.updateName == '') { this.nameState = Valid; }
-                else { this.nameState = true; }
-                
-                if( this.updateAddress == '') { this.addressState = Valid; }
-                else { this.addressState = true;}
-
-                if(this.updatePhone == '') { this.phoneState = Valid; }
-                else { this.phoneState = true;}
-                
-                return Valid
-            }
             else if(this.updateAddress == '')
             {                
                 this.addressState = Valid;
                 if( this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
-
-                if( this.updateTitle == '') { this.titleState = Valid; }
-                else { this.titleState = true; }
 
                 if(this.updatePhone == '') { this.phoneState = Valid; }
                 else { this.phoneState = true;}
@@ -356,9 +345,6 @@ export default {
                 if( this.updateName == '') { this.nameState = Valid; }
                 else { this.nameState = true; }
 
-                if( this.updateTitle == '') { this.titleState = Valid; }
-                else { this.titleState = true; }
-
                 if( this.updateAddress == '') { this.addressState = Valid; }
                 else { this.addressState = true;}
 
@@ -367,7 +353,6 @@ export default {
             else
             {
                 this.nameState = Valid;  
-                this.titleState = Valid;  
                 this.addressState = Valid;  
                 this.phoneState = Valid;
                 return Valid

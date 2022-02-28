@@ -55,8 +55,7 @@
                         </validation-provider>
 
                         <validation-provider v-slot="{ errors }" name="Phone Number" :rules="{
-                            required: true,
-                            digits: 10,                            
+                            required: true,                                                   
                             }">
                             <v-text-field v-model="phonenumber" :counter="10" :error-messages="errors"
                                 label="Phone Number" required></v-text-field>

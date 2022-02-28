@@ -37,9 +37,10 @@
   
 <H4>LOGIN</H4>
   
-![image](https://user-images.githubusercontent.com/40432032/155995707-37d3cde8-26fc-469e-af82-bf2cd9ceaf3e.png)
+![image](https://user-images.githubusercontent.com/40432032/155996128-ed6f45b5-e46a-4f97-9978-1210b121e6e1.png)
   
 <H4>FORGOT PASSWORD</H4>
-![image](https://user-images.githubusercontent.com/40432032/155995804-3b62b897-293d-43bc-b857-eb748db75a2c.png)
+  
+![image](https://user-images.githubusercontent.com/40432032/155996073-3d32b2f8-229b-467f-b935-d06e9df498a3.png)
 
 

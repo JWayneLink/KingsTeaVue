@@ -37,6 +37,11 @@ IDE: Visual Code
 | Create New Account | Create New Customer |
 | ------ | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/156096690-7527f982-b90f-4fcf-9163-42393cbfa16c.png) |  ![image](https://user-images.githubusercontent.com/40432032/156096598-4fdf4827-5605-491f-b65b-10fc81084f8c.png)  |
+
+  
+| Create New Product | Create New SalesOrder |
+| ------ | ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156101393-9e84c376-6cb0-4012-a94c-115d20dc0ab5.png) | |
   
 <HR>
  
@@ -69,18 +74,26 @@ IDE: Visual Code
 | ![image](https://user-images.githubusercontent.com/40432032/156098809-a46a969d-6bac-430c-9480-64c69f95789c.png) | 
 
 <HR>
-  
-   
+     
 | Update Account |
 | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/156098896-5b68bec6-1b0e-445b-8faa-31164d4e90ab.png) | 
 
 <HR>
   
+| Account Settings |
+| ------ |
+|  ![image](https://user-images.githubusercontent.com/40432032/156100747-ba78452a-214e-4004-a64c-518294b9f275.png) | 
+
+<HR>
+
+| Delete Account |
+| ------ |
+|  ![image](https://user-images.githubusercontent.com/40432032/156100863-61a2d594-50da-491f-b2a1-a988d9e32a1e.png) | 
+
+<HR>
 
 
-
-  
   
 <H4>MAIN PAGE CAROUSEL BANNER</H4>
 <H4>MAIN PAGE CAROUSEL BANNER</H4>

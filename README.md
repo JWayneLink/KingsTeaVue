@@ -39,28 +39,27 @@ IDE: Visual Code
 | ![image](https://user-images.githubusercontent.com/40432032/156096690-7527f982-b90f-4fcf-9163-42393cbfa16c.png) |  ![image](https://user-images.githubusercontent.com/40432032/156096598-4fdf4827-5605-491f-b65b-10fc81084f8c.png)  |
 
   
-| Create New Product | Create New SalesOrder |
+
+| Create New Product | Account Settings |
 | ------ | ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/156101393-9e84c376-6cb0-4012-a94c-115d20dc0ab5.png) | |
+| ![image](https://user-images.githubusercontent.com/40432032/156106392-53704996-1e96-4446-b25d-0c2ff0910829.png) | ![image](https://user-images.githubusercontent.com/40432032/156106336-74fff54f-79ef-470a-8df0-5897f9ee38d3.png) |
   
-<HR>
+  
+  
+
+  
+<HR>  
  
 | Customer Management Page |
 | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/155997198-3f22d338-350f-4e52-9eb0-07a3226fe9a5.png) | 
 
 <HR>
-  
-| Update Customer |
-| ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/155997336-352db9e1-0f32-4a23-af18-8e02d3d18e77.png) | 
-  
-<HR>
-  
-| Delete Customer |
-| ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/155997500-cc230912-4eb0-4cdf-b95e-c3d88ce6ee16.png) | 
-  
+   
+| Update Customer | Delete Customer |
+| ------ | ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/155997336-352db9e1-0f32-4a23-af18-8e02d3d18e77.png) |  ![image](https://user-images.githubusercontent.com/40432032/155997500-cc230912-4eb0-4cdf-b95e-c3d88ce6ee16.png)  |
+ 
 <HR>
   
 | Get Single Customer Query |
@@ -68,28 +67,22 @@ IDE: Visual Code
 | ![image](https://user-images.githubusercontent.com/40432032/156097786-1483109e-3186-4d2c-afc8-cf143980ca68.png) | 
 
 <HR>
- 
+  
 | Account Management Page |
 | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/156098809-a46a969d-6bac-430c-9480-64c69f95789c.png) | 
 
 <HR>
-     
-| Update Account |
-| ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/156098896-5b68bec6-1b0e-445b-8faa-31164d4e90ab.png) | 
+  
+| Update Account | Delete Account |
+| ------ | ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156098896-5b68bec6-1b0e-445b-8faa-31164d4e90ab.png) |  ![image](https://user-images.githubusercontent.com/40432032/156100863-61a2d594-50da-491f-b2a1-a988d9e32a1e.png)  |
 
+  
 <HR>
   
-| Account Settings |
-| ------ |
-|  ![image](https://user-images.githubusercontent.com/40432032/156100747-ba78452a-214e-4004-a64c-518294b9f275.png) | 
-
-<HR>
-
-| Delete Account |
-| ------ |
-|  ![image](https://user-images.githubusercontent.com/40432032/156100863-61a2d594-50da-491f-b2a1-a988d9e32a1e.png) | 
+  
+ 
 
 <HR>
 

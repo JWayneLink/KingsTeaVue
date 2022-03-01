@@ -67,10 +67,8 @@ IDE: Visual Code
 | Update Account | Delete Account |
 | ------ | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/156098896-5b68bec6-1b0e-445b-8faa-31164d4e90ab.png) |  ![image](https://user-images.githubusercontent.com/40432032/156100863-61a2d594-50da-491f-b2a1-a988d9e32a1e.png)  |
-
   
-<HR>
-  
+<HR>  
   
 | Create New Sales Order |
 | ------ |
@@ -80,11 +78,19 @@ IDE: Visual Code
   ![image](https://user-images.githubusercontent.com/40432032/156108184-cf90d831-a2f0-4d7e-aab6-c591656f8a3d.png)
   ![image](https://user-images.githubusercontent.com/40432032/156108218-6e24bdcd-45bf-42b5-b630-38644f4f037d.png)
 
+<HR>
+  
+| Sales Order Information |
+| ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156110075-56d7f853-ba66-4cbb-816f-ba67ce6722f0.png)
+  ![image](https://user-images.githubusercontent.com/40432032/156110102-91bc24c8-ab16-4985-8bca-3b0f0d7ad36d.png)
 
+<HR>
   
+| Error Handling View |
+| ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156110343-84bed3ce-bc59-4332-a25a-06984e82aa6f.png)  
   
+<HR>
   
-  
-<H4>MAIN PAGE CAROUSEL BANNER</H4>
-<H4>MAIN PAGE CAROUSEL BANNER</H4>
-<H4>MAIN PAGE CAROUSEL BANNER</H4>
+

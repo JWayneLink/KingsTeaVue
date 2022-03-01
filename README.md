@@ -5,6 +5,12 @@
 
 
 <H3>Skills that I used in this project</H3>
+- IDE: Visual Code
+
+
+```sh
+npm install vue-router
+```
 
 <ul>
   <li>

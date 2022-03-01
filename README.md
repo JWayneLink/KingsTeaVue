@@ -42,11 +42,7 @@ IDE: Visual Code
 
 | Create New Product | Account Settings |
 | ------ | ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/156106392-53704996-1e96-4446-b25d-0c2ff0910829.png) | ![image](https://user-images.githubusercontent.com/40432032/156106336-74fff54f-79ef-470a-8df0-5897f9ee38d3.png) |
-  
-  
-  
-
+| ![image](https://user-images.githubusercontent.com/40432032/156106392-53704996-1e96-4446-b25d-0c2ff0910829.png) | ![image](https://user-images.githubusercontent.com/40432032/156106336-74fff54f-79ef-470a-8df0-5897f9ee38d3.png) |     
   
 <HR>  
  
@@ -59,12 +55,6 @@ IDE: Visual Code
 | Update Customer | Delete Customer |
 | ------ | ------ |
 | ![image](https://user-images.githubusercontent.com/40432032/155997336-352db9e1-0f32-4a23-af18-8e02d3d18e77.png) |  ![image](https://user-images.githubusercontent.com/40432032/155997500-cc230912-4eb0-4cdf-b95e-c3d88ce6ee16.png)  |
- 
-<HR>
-  
-| Get Single Customer Query |
-| ------ |
-| ![image](https://user-images.githubusercontent.com/40432032/156097786-1483109e-3186-4d2c-afc8-cf143980ca68.png) | 
 
 <HR>
   
@@ -82,11 +72,18 @@ IDE: Visual Code
 <HR>
   
   
- 
+| Create New Sales Order |
+| ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156107978-a9da5dae-e11c-4925-afe4-72ed71251684.png)
+  ![image](https://user-images.githubusercontent.com/40432032/156108023-2353b307-5956-477d-9c21-9ee181c40e7b.png)
+  ![image](https://user-images.githubusercontent.com/40432032/156108150-71690594-977b-443d-a921-22bd6c2465ef.png)
+  ![image](https://user-images.githubusercontent.com/40432032/156108184-cf90d831-a2f0-4d7e-aab6-c591656f8a3d.png)
+  ![image](https://user-images.githubusercontent.com/40432032/156108218-6e24bdcd-45bf-42b5-b630-38644f4f037d.png)
 
-<HR>
 
-
+  
+  
+  
   
 <H4>MAIN PAGE CAROUSEL BANNER</H4>
 <H4>MAIN PAGE CAROUSEL BANNER</H4>

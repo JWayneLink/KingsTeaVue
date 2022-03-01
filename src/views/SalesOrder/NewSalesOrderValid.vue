@@ -376,7 +376,7 @@ Vue.use(Vuetify)
                     let postObj = {};
                     postObj.so = '';
                     postObj.custId = custId;
-                    postObj.pn = item.productName;
+                    postObj.pn = item.ProductNumber;
                     postObj.qty = item.productQty;
                     postObj.status = 'S';
                     postObj.creator = loginAccount;
@@ -420,6 +420,7 @@ Vue.use(Vuetify)
 
                 let addObj = {}
                 addObj.item = this.previewItem++;
+                addObj.ProductNumber = this.selectedProductPn;
                 addObj.productName = this.selectedProductName;
                 addObj.productCategory = this.selectedProductCategory;
                 addObj.productPrice = this.selectedProductPrice;

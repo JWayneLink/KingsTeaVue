@@ -8,6 +8,7 @@
                 v-model="querySalesOrder"
                 v-on:keyup="SearchAutoCompleate"
                 placeholder="Search Sales Order"
+                style="margin-left:20px;"
                 />             
                 <!-- <b-form-input v-model="querySalesOrder" size="sm" class="mr-sm-2" placeholder="Search Sales Order" style="margin-left:20px;"></b-form-input>                 -->
             </b-navbar-nav>

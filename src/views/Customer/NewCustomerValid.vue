@@ -119,7 +119,7 @@
             return {
                 cusomercode:'',
                 name:'',
-                title:'',
+                title:'Mr.',
                 address:'',
                 phone:'',
                 dismissSecs: 3,

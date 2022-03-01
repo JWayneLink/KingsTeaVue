@@ -81,7 +81,7 @@ export default {
         return {
             datasource:[],
             expanded: [],
-            singleExpand: true,
+            singleExpand: false,
             headers: [
                 {
                     text: "Sales Order",
@@ -148,7 +148,9 @@ export default {
     methods: {
         async getAllSalesOrder(){
             // QUERY ALL SALESORDER
+            debugger;
             this.items = [];
+            let itemsTmp = [];
             let results = await SalesOrderApi.get(`GetAllSalesOrdersDetailAsync`);      
             results.data.data.forEach((element) => {
                 let item = {};
@@ -173,24 +175,24 @@ export default {
                     if(d.productSize == 'M') detial.productSize = `${d.productSize} -  16 fl oz`; 
                     if(d.productSize == 'S') detial.productSize = `${d.productSize} -  12 fl oz`;  
                     
-                    switch (d.prodSugar) {
+                    switch (d.productSugar) {
                     case '1':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
                         break;
                     case '2':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
                         break;
                     case '3':   
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                    
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                    
                         break;
                     case '4':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                  
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                  
                         break;
                     case '5':      
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                 
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                 
                         break;
                     default:
-                        detial.prodSugar = `fixed Sugar`;
+                        detial.productSugar = `fixed Sugar`;
                     }
 
                     detial.productIce = `${d.productIce} pcs`;
@@ -200,8 +202,9 @@ export default {
 
                     item.details.push(detial);                        
                 });
-                this.items.push(item);
+                itemsTmp.push(item);
             });
+            this.items = itemsTmp;
             this.responseMsg = results.data.message;
         },
         async getSingleSalesOrder(so){
@@ -231,24 +234,24 @@ export default {
                     if(d.productSize == 'M') detial.productSize = `${d.productSize} -  16 fl oz`; 
                     if(d.productSize == 'S') detial.productSize = `${d.productSize} -  12 fl oz`;  
                     
-                    switch (d.prodSugar) {
+                    switch (d.productSugar) {
                     case '1':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
                         break;
                     case '2':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
                         break;
                     case '3':   
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                    
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                    
                         break;
                     case '4':
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                  
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                  
                         break;
                     case '5':      
-                        detial.prodSugar = `${d.prodSugar} packet (s) Sugar`;                 
+                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                 
                         break;
                     default:
-                        detial.prodSugar = `fixed Sugar`;
+                        detial.productSugar = `fixed Sugar`;
                     }
 
                     detial.productIce = `${d.productIce} pcs`;

@@ -39,7 +39,7 @@
                             </v-text-field>
                         </validation-provider>
 
-                        <validation-provider v-slot="{ errors }" name="name" rules="required|max:10">
+                        <validation-provider v-slot="{ errors }" name="name" rules="required|max:50">
                             <v-text-field v-model="name" :counter="10" :error-messages="errors" label="Name" required>
                             </v-text-field>
                         </validation-provider>
@@ -156,7 +156,7 @@ import { extend, ValidationObserver, ValidationProvider, setInteractionMode } fr
             return {     
                 pn: '',
                 name: '',
-                category: '',
+                category: 'Coffee',
                 size: 'L',
                 sugar: '0',
                 ice: '',

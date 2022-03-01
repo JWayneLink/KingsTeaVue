@@ -2,48 +2,43 @@
 
 
 <H2> Vue 2.6 framework Frontend Kings Tea WEB UI</H2>
+IDE: Visual Code
 
+<HR>
 
 <H3>Skills that I used in this project</H3>
-<H4>IDE: Visual Code<H/4>
+  
+- npm install vue-router
+- npm install vue bootstrap-vue bootstrap
+- npm install vue-i18n
+- npm install axios vue-axios --save
+- npm install vuex --save
+- npm install vuetify
+- npm install vee-validate --save
+- npm install vue-typeahead-bootstrap --save
 
-<HR>
-
-```sh
-npm install vue-router
-npm install vue bootstrap-vue bootstrap
-npm install vue-i18n
-npm install axios vue-axios --save
-npm install vuex --save
-npm install vuetify
-npm install vee-validate --save
-npm install vue-typeahead-bootstrap --save
-```
 
 <HR>
   
-<H4>LOGIN</H4>
+| Account Log in | Forgot Password |
+| ------ | ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156097083-4921eb29-69ef-4845-90e4-07db8abc22fe.png) |  ![image](https://user-images.githubusercontent.com/40432032/156097187-5c49d5f7-740b-4b17-b792-0435677b8618.png)  |
   
-![image](https://user-images.githubusercontent.com/40432032/155996128-ed6f45b5-e46a-4f97-9978-1210b121e6e1.png)
-  
-<H4>FORGOT PASSWORD</H4>
-  
-![image](https://user-images.githubusercontent.com/40432032/155996073-3d32b2f8-229b-467f-b935-d06e9df498a3.png)
-  
-<H4>CREATE NEW ACCOUNT</H4>
- 
-![image](https://user-images.githubusercontent.com/40432032/155997110-1f4a4bba-b1aa-4f4f-a399-fca06010f8ba.png)
-  
-<H4>MAIN PAGE CAROUSEL BANNER</H4>
+<HR>
+   
+<H4>Main page carousel banner</H4>
   
 ![image](https://user-images.githubusercontent.com/40432032/155998820-0e593591-497c-4b10-8fa8-c49be10a1507.png)
 ![image](https://user-images.githubusercontent.com/40432032/155998974-794ed584-6f45-4e21-ac71-a85826e4a4f4.png)
 ![image](https://user-images.githubusercontent.com/40432032/155999172-4b26b000-cefa-4960-aed1-c865a991a167.png)
 
+<HR>
 
-<H4>CREATE NEW PRODUCT</H4>
+| Create New Account | Create New Customer |
+| ------ | ------ |
+| ![image](https://user-images.githubusercontent.com/40432032/156096690-7527f982-b90f-4fcf-9163-42393cbfa16c.png) |  ![image](https://user-images.githubusercontent.com/40432032/156096598-4fdf4827-5605-491f-b65b-10fc81084f8c.png)  |
   
-![image](https://user-images.githubusercontent.com/40432032/155996653-6b8fddb3-2915-4234-bbdd-fbcf630ee6c0.png)
+
 
 <H4>CREATE NEW CUSTOMER</H4>
   

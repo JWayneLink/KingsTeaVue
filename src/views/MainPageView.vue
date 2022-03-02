@@ -9,11 +9,11 @@
             indicators
         >
             <b-carousel-slide
-            :img-src="require('../assets/KingsTeaPictures/Banner/1.jpg')"
+            :img-src="require('../assets/KingsTeaPictures/Banner/2.jpg')"
             ></b-carousel-slide>
 
             <b-carousel-slide
-            :img-src="require('../assets/KingsTeaPictures/Banner/2.jpg')"
+            :img-src="require('../assets/KingsTeaPictures/Banner/1.jpg')"
             ></b-carousel-slide>
 
             <b-carousel-slide

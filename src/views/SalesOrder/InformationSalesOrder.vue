@@ -151,8 +151,11 @@ export default {
             debugger;
             this.items = [];
             let itemsTmp = [];
-            let results = await SalesOrderApi.get(`GetAllSalesOrdersDetailAsync`);      
-            results.data.data.forEach((element) => {
+            let results = await SalesOrderApi.get(`GetAllSalesOrdersDetailAsync`);  
+
+            if(results.data.isSuccess)    
+            {
+                results.data.data.forEach((element) => {
                 let item = {};
                 item.so = element.so;
                 item.custName = element.custName;
@@ -167,45 +170,51 @@ export default {
                 item.details = []
                 
                 element.orderDetailDtos.forEach((d) =>{
-                    let detial = {};
-                    detial.productName = d.productName;
-                    detial.productCategory = d.productCategory;
+                        let detial = {};
+                        detial.productName = d.productName;
+                        detial.productCategory = d.productCategory;
 
-                    if(d.productSize == 'L') detial.productSize = `${d.productSize} -  20 fl oz`; 
-                    if(d.productSize == 'M') detial.productSize = `${d.productSize} -  16 fl oz`; 
-                    if(d.productSize == 'S') detial.productSize = `${d.productSize} -  12 fl oz`;  
-                    
-                    switch (d.productSugar) {
-                    case '1':
-                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
-                        break;
-                    case '2':
-                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;
-                        break;
-                    case '3':   
-                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                    
-                        break;
-                    case '4':
-                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                  
-                        break;
-                    case '5':      
-                        detial.productSugar = `${d.productSugar} packet (s) Sugar`;                 
-                        break;
-                    default:
-                        detial.productSugar = `fixed Sugar`;
-                    }
+                        if(d.productSize == 'L') detial.productSize = `${d.productSize} -  20 fl oz`; 
+                        if(d.productSize == 'M') detial.productSize = `${d.productSize} -  16 fl oz`; 
+                        if(d.productSize == 'S') detial.productSize = `${d.productSize} -  12 fl oz`;  
+                        
+                        switch (d.productSugar) {
+                        case '1':
+                            detial.productSugar = `${d.productSugar} packet (s) Sugar`;
+                            break;
+                        case '2':
+                            detial.productSugar = `${d.productSugar} packet (s) Sugar`;
+                            break;
+                        case '3':   
+                            detial.productSugar = `${d.productSugar} packet (s) Sugar`;                    
+                            break;
+                        case '4':
+                            detial.productSugar = `${d.productSugar} packet (s) Sugar`;                  
+                            break;
+                        case '5':      
+                            detial.productSugar = `${d.productSugar} packet (s) Sugar`;                 
+                            break;
+                        default:
+                            detial.productSugar = `fixed Sugar`;
+                        }
 
-                    detial.productIce = `${d.productIce} pcs`;
-                    detial.productPrice = `$ ${d.productPrice}`;
-                    detial.productQty = d.productQty;
-                    detial.productSubTotal = `$ ${d.productSubTotal}`;
+                        detial.productIce = `${d.productIce} pcs`;
+                        detial.productPrice = `$ ${d.productPrice}`;
+                        detial.productQty = d.productQty;
+                        detial.productSubTotal = `$ ${d.productSubTotal}`;
 
-                    item.details.push(detial);                        
+                        item.details.push(detial);                        
+                    });
+                    itemsTmp.push(item);
                 });
-                itemsTmp.push(item);
-            });
-            this.items = itemsTmp;
-            this.responseMsg = results.data.message;
+                this.items = itemsTmp;
+                this.responseMsg = results.data.message;
+            }
+            else{
+                this.responseMsg = results.data.message;
+                this.showAlertNG();
+            }
+            
         },
         async getSingleSalesOrder(so){
             // QUERY SINGLE SALESORDER

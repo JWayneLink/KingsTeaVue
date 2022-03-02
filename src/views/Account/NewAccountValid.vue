@@ -57,7 +57,7 @@
                         <validation-provider v-slot="{ errors }" name="Phone Number" :rules="{
                             required: true,                                                   
                             }">
-                            <v-text-field v-model="phonenumber" :counter="10" :error-messages="errors"
+                            <v-text-field v-model="phonenumber" :error-messages="errors"
                                 label="Phone Number" required></v-text-field>
                         </validation-provider>
 
@@ -151,6 +151,12 @@
                     {
                         this.responseMsg = response.data.message;
                         this.showAlertOK();
+                        
+                        let router = this.$router;
+                        setTimeout(function() 
+                        {
+                            router.push('/account/login');
+                        }, 3000);
                     }
                     else{
                         this.responseMsg = response.data.message;

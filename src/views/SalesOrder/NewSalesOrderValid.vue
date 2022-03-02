@@ -44,7 +44,7 @@
                         {{ step.name }}
                         <v-card :color="color" class="mb-12" height="450px">                            
                             <v-card-text>
-                                <!-- Select Customer Code -->
+                                <!-- Select Delivery Info -->
                                 <v-form :ref="'stepForm'" v-if="n==0" v-model="step.valid" lazy-validation>
                                     <v-select
                                     v-model="selectedCustCode"
@@ -114,7 +114,8 @@
                                                 <v-text-field v-model="selectedProductQty" label="Qty" type="number">{{selectedProductPrice}}</v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="5">
-                                                <v-alert dense text type="success" :value="addAlert" transition="fade-transition" >Thanks for adding <strong>hight-quality</strong> product. Enjoin your life.</v-alert>
+                                                <v-alert dense text type="error" :value="addAlertNG" transition="fade-transition" >Product Qty count could not be zero.</v-alert>
+                                                <v-alert dense text type="success" :value="addAlertOK" transition="fade-transition" >Thanks for adding <strong>hight-quality</strong> product. Enjoin your life.</v-alert>
                                             </v-col>
                                             <v-col cols="12" sm="1" >
                                                <v-btn @click="addProduct" class="mx-2" fab dark small color="teal" style="float:right;"><v-icon dark>mdi-cart-arrow-down</v-icon></v-btn>
@@ -208,14 +209,15 @@ Vue.use(Vuetify)
                 curr: 1,
                 lastStep: 4,
                 steps: [
-                    {name: "Customer", rules: [v => !!v || "Required."], valid: true},
+                    {name: "Delivery Info", rules: [v => !!v || "Required."], valid: true},
                     {name: "Product", rules: [v=> !!v || "Required."], valid: true},
                     {name: "Order Preview", rules: [v=> !!v || "Required."], valid: true},
                     {name: "Complete"},
                 ],
                 valid: false,
                 backDisabled: false,
-                addAlert: false,
+                addAlertOK: false,
+                addAlertNG: false,
                 dismissedCount: 0,
                 stepForm: [],
                 custCodes: [],                
@@ -368,7 +370,6 @@ Vue.use(Vuetify)
             },
             async addSalesOrder(){
 
-                debugger;
                 let loginAccount = localStorage.getItem('account');
                 let custId = this.selectedCustCode;
                 let postArr = [];                
@@ -386,7 +387,7 @@ Vue.use(Vuetify)
                 //POST NEW PRODUCT          
                 SalesOrderApi.post(`AddSalesOrderBulkAsync`, postArr)
                 .then( (response) => {
-                    debugger;
+                    
                     if(response.data.isSuccess)
                     {
                         this.responseMsg = `Your Order: ${response.data.data[0]}`;      
@@ -398,7 +399,6 @@ Vue.use(Vuetify)
                     }
                 })
                 .catch( (error) => {
-                    debugger;
                     if(error.response.status == 422)
                     {
                         this.responseMsg = error.response.data[Object.keys(error.response.data)]
@@ -407,32 +407,47 @@ Vue.use(Vuetify)
                 });
             },
             addProduct(){
-                this.valid = false;
-                this.addAlert = true;
-                this.dismissedCount = 5;                
-                window.setInterval(() => {
-                    if(this.dismissedCount > 0)
-                    {
-                        this.dismissedCount = this.dismissedCount -1;
-                    }                              
-                    if(this.dismissedCount == 0) this.addAlert = false;
-                }, 1000);
+                debugger;
+                if(this.selectedProductQty == 0)
+                {
+                    this.addAlertNG = true;
+                    this.dismissedCount = 5;                
+                    window.setInterval(() => {
+                        if(this.dismissedCount > 0)
+                        {
+                            this.dismissedCount = this.dismissedCount -1;
+                        }                              
+                        if(this.dismissedCount == 0) this.addAlertNG = false;
+                    }, 1000);
+                }
+                else{
+                    this.valid = false;
+                    this.addAlertOK = true;
+                    this.dismissedCount = 5;                
+                    window.setInterval(() => {
+                        if(this.dismissedCount > 0)
+                        {
+                            this.dismissedCount = this.dismissedCount -1;
+                        }                              
+                        if(this.dismissedCount == 0) this.addAlertOK = false;
+                    }, 1000);
 
-                let addObj = {}
-                addObj.item = this.previewItem++;
-                addObj.ProductNumber = this.selectedProductPn;
-                addObj.productName = this.selectedProductName;
-                addObj.productCategory = this.selectedProductCategory;
-                addObj.productPrice = this.selectedProductPrice;
-                addObj.productQty = this.selectedProductQty;
-                addObj.productSubtotal = this.selectedProductPrice * this.selectedProductQty;
-                this.addedProductItem.push(addObj);
-                this.previewTotalRows = this.addedProductItem.length;
+                    let addObj = {}
+                    addObj.item = this.previewItem++;
+                    addObj.ProductNumber = this.selectedProductPn;
+                    addObj.productName = this.selectedProductName;
+                    addObj.productCategory = this.selectedProductCategory;
+                    addObj.productPrice = this.selectedProductPrice;
+                    addObj.productQty = this.selectedProductQty;
+                    addObj.productSubtotal = this.selectedProductPrice * this.selectedProductQty;
+                    this.addedProductItem.push(addObj);
+                    this.previewTotalRows = this.addedProductItem.length;
 
-                this.previewTotalPrice = 0
-                this.addedProductItem.forEach(element => {
-                    this.previewTotalPrice += element.productSubtotal;
-                });
+                    this.previewTotalPrice = 0
+                    this.addedProductItem.forEach(element => {
+                        this.previewTotalPrice += element.productSubtotal;
+                    });
+                }
             },
             removeProduct(){
 

@@ -149,27 +149,43 @@ export default {
             }
         },
         confirmUpdate(){
-            if(this.account != '')
-            {
-                AccountApi.put(`UpdateAccountAsync`,{
-                account: this.account,
-                name: this.name,
-                email: this.email,
-                phone: this.phone,
-            })
-            .then( (response) => {
-                if(response.data.isSuccess)
+
+            if(this.name == ''){
+                this.responseMsg = 'Name is required'; 
+                this.showAlertNG();
+            } 
+            else if(this.email == ''){
+                this.responseMsg = 'Email is required'; 
+                this.showAlertNG();
+            } 
+            else if(this.phone == ''){
+                this.responseMsg = 'Phone is required'; 
+                this.showAlertNG();
+            } 
+            else {
+                if(this.account != '')
                 {
-                    this.responseMsg = response.data.message;
-                    this.showAlertOK();
-                    this.disabled = true;
+
+                    AccountApi.put(`UpdateAccountAsync`,{
+                    account: this.account,
+                    name: this.name,
+                    email: this.email,
+                    phone: this.phone,
+                })
+                .then( (response) => {
+                    if(response.data.isSuccess)
+                    {
+                        this.responseMsg = response.data.message;
+                        this.showAlertOK();
+                        this.disabled = true;
+                    }
+                    else{
+                        this.responseMsg = response.data.message;
+                        this.showAlertNG();
+                    }
+                })
+                .catch( (error) => alert(error));  
                 }
-                else{
-                    this.responseMsg = response.data.message;
-                    this.showAlertNG();
-                }
-            })
-            .catch( (error) => alert(error));  
             }
         },
         countDownChangedOK(dismissCountDownOK) {

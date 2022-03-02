@@ -40,7 +40,7 @@
                         </validation-provider>
 
                         <validation-provider v-slot="{ errors }" name="name" rules="required|max:50">
-                            <v-text-field v-model="name" :counter="10" :error-messages="errors" label="Name" required>
+                            <v-text-field v-model="name" :counter="50" :error-messages="errors" label="Name" required>
                             </v-text-field>
                         </validation-provider>
 
@@ -85,17 +85,18 @@
                             <b-input-group-prepend>
                                 <b-button @click="resetSugar" variant="outline-secondary" >Reset</b-button>
                             </b-input-group-prepend>
-                            <b-form-rating v-model="sugar" color="#a8a8a8"></b-form-rating>
+                            <b-form-rating v-model="sugar" color="#a8a8a8" @change="sugarChange"></b-form-rating>
                             <b-input-group-append>
                                 <b-input-group-text class="justify-content-center" style="min-width: 3em;">
-                                {{ sugar }}
+                                {{ displaySugar }}
                                 </b-input-group-text>
                             </b-input-group-append>
                         </b-input-group>
                         
                         <label for="iceRange" class="form-label" style="color:grey;">Ice</label>
                         <b-input-group>                            
-                            <input type="range" class="form-range" id="iceRange"  v-model="ice" min="0" max="5">
+                            <input type="range" class="form-range" id="iceRange"  v-model="ice" min="0" max="5" @change="iceChange">
+                            <div><span style="color:grey;"> {{ displayIce }} </span></div>
                         </b-input-group>
 
                         <validation-provider v-slot="{ errors }" name="price" rules="required|numeric">
@@ -114,6 +115,7 @@
             </b-col>
             <b-col></b-col>
         </b-row>
+        <b-row style="height:36px;"></b-row>
     </b-container>
 </template>
 
@@ -159,7 +161,9 @@ import { extend, ValidationObserver, ValidationProvider, setInteractionMode } fr
                 category: 'Coffee',
                 size: 'L',
                 sugar: '0',
-                ice: '',
+                displaySugar:'No Sugar',
+                displayIce:'No Ice',
+                ice: '0',
                 price: '',
                 dismissSecs: 3,
                 dismissCountDownOK: 0,
@@ -215,6 +219,55 @@ import { extend, ValidationObserver, ValidationProvider, setInteractionMode } fr
             },
             resetSugar(){
                 this.sugar = 0;
+            },
+            iceChange(){
+                
+                switch (this.ice) {
+                case '0':
+                    this.displayIce = `No Ice`;
+                    break;
+                case '1':
+                    this.displayIce = `Low Ice`;
+                    break;
+                case '2':   
+                    this.displayIce = `Less Ice`;                    
+                    break;
+                case '3':
+                    this.displayIce = `Normal Ice`;                  
+                    break;
+                case '4':      
+                    this.displayIce = `Fixed Ice`;                 
+                    break;
+                case '5':      
+                    this.displayIce = `Warm`;                 
+                    break;
+                default:
+                    this.displayIce = `Fixed Ice`;
+                }
+            },
+            sugarChange(){
+                switch (this.sugar) {
+                case 0:
+                    this.displaySugar = `No Sugar`;
+                    break;
+                case 1:
+                    this.displaySugar = `Low Sugar`;
+                    break;
+                case 2:   
+                    this.displaySugar = `Half Sugar`;                    
+                    break;
+                case 3:
+                    this.displaySugar = `Less Sugar`;                  
+                    break;
+                case 4:      
+                    this.displaySugar = `Standard Sugar`;                 
+                    break;
+                case 5:      
+                    this.displaySugar = `Fixed Sugar`;                 
+                    break;
+                default:
+                    this.displaySugar = `Fixed Sugar`;
+                }
             },
             countDownChangedOK(dismissCountDownOK) {
                 this.dismissCountDownOK = dismissCountDownOK

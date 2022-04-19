@@ -4,7 +4,7 @@
 
 <div v-for="(c,index) in items" :key="index">    
     <v-row  v-if="index == 0 || index % 3 == 0">
-        <v-col cols="1"></v-col>
+        <v-col cols="2"></v-col>
         <v-col v-if="index % 3 == 0"
         cols="3"
         sm="3">
@@ -240,7 +240,7 @@
                 <v-list>
                 <v-list-item>
                     <v-list-item-action>
-                    <v-icon>mdi-widgets</v-icon>
+                    <v-icon color="indigo">mdi-widgets</v-icon>
                     </v-list-item-action>
 
                     <v-list-item-content>
@@ -255,7 +255,7 @@
 
                 <v-list-item>
                     <v-list-item-action>
-                    <v-icon>mdi-account</v-icon>
+                    <v-icon color="indigo">mdi-account</v-icon>
                     </v-list-item-action>
 
                     <v-list-item-content>
@@ -271,7 +271,7 @@
 
                 <v-list-item>
                     <v-list-item-action>
-                    <v-icon>mdi-phone</v-icon>
+                    <v-icon color="indigo">mdi-phone</v-icon>
                     </v-list-item-action>
 
                     <v-list-item-content>
@@ -309,14 +309,13 @@ import axios from 'axios'
 import VueAsios from 'vue-axios'
 import CustomerApi from '@/api/CustomerApi.js'
 Vue.use(VueAsios, axios)
-
+// import colors from 'vuetify/lib/util/colors'
 export default({
     name: 'CustomerInfo',
     data() {
         return {
             items: [],
-            customerList: [],
-            imgRandom:0
+            customerList: []
         }
     },
     components:{
@@ -325,9 +324,6 @@ export default({
     mounted(){
         this.queryAllCustomer();
         this.customerList = this.items;
-        console.log(this.items)
-
-        this.imgRandom = Math.floor(Math.random() * 1000);
     },
     methods:{
         async queryAllCustomer(){

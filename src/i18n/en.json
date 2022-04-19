@@ -13,7 +13,7 @@
         },
         "Customer": {
             "title":"Customer",
-            "actions": ["New Customer","Customer Management", "Customer Info"]
+            "actions": ["New Customer","Customer Management", "Customer Information"]
         },
         "SalesOrder": {
             "title": "Sales Order",

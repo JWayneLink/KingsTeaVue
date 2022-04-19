@@ -28,6 +28,9 @@
                     <b-dropdown-item href="#">
                          <router-link style="color:black;" to="/customer/maintenance">{{ $t('NavBar.Customer.actions[1]')}}</router-link>
                     </b-dropdown-item>
+                    <b-dropdown-item href="#">
+                        <router-link style="color:black;" to="/customer/information">{{ $t('NavBar.Customer.actions[2]')}}</router-link>
+                    </b-dropdown-item>
                 </b-nav-item-dropdown>
 
                 <!-- SalesOrder Nav -->

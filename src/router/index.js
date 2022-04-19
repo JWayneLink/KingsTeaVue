@@ -51,8 +51,8 @@ const routes = [{
   },
   {
     path: "/product/information",
-    name: "Information Product",
-    component: () => import('../views/Product/InformationProduct.vue')
+    name: "Product Information",
+    component: () => import('../views/Product/ProductInfo.vue')
   },
   {
     path: "/customer/new",
@@ -63,6 +63,11 @@ const routes = [{
     path: "/customer/maintenance",
     name: "Maintenance Customer",
     component: () => import('../views/Customer/MaintenanceCustomer.vue')
+  },
+  {
+    path: "/customer/information",
+    name: "Customer Information",
+    component: () => import('../views/Customer/CustomerInfo.vue')
   },
   {
     path: "/salesorder/new",

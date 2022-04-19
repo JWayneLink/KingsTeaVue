@@ -13,7 +13,7 @@
       },
       "Customer": {
           "title":"顧客",
-          "actions": ["新增客戶","客戶資訊管理"]
+          "actions": ["新增客戶","客戶資訊管理","客戶資訊"]
       },
       "SalesOrder": {
           "title": "訂單",

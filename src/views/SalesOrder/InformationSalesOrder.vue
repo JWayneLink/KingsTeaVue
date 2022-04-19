@@ -148,7 +148,7 @@ export default {
     methods: {
         async getAllSalesOrder(){
             // QUERY ALL SALESORDER
-            debugger;
+            
             this.items = [];
             let itemsTmp = [];
             let results = await SalesOrderApi.get(`GetAllSalesOrdersDetailAsync`);  

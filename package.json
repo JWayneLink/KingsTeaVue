@@ -58,7 +58,8 @@
       "no-debugger": 0,
       "strict": "off",
       "no-console": "off",
-      "no-tabs": "off"
+      "no-tabs": "off",
+      "vue/no-use-v-if-with-v-for": "off"
     }
   },
   "browserslist": [

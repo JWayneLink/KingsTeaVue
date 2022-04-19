@@ -407,8 +407,8 @@ Vue.use(Vuetify)
                 });
             },
             addProduct(){
-                debugger;
-                if(this.selectedProductQty == 0)
+                
+                if(this.selectedProductQty <= 0)
                 {
                     this.addAlertNG = true;
                     this.dismissedCount = 5;                

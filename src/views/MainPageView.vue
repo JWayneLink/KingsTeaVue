@@ -60,6 +60,7 @@
         :src="require(`../assets/KingsTeaPictures/Product/單品圖_220225_${n}.jpg`)"
         :lazy-src="require(`../assets/KingsTeaPictures/Product/單品圖_220225_${n}.jpg`)"
         aspect-ratio="1"
+        hover
         class="grey lighten-2"
       >     
         <template v-slot:placeholder>

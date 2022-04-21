@@ -8,7 +8,8 @@
         v-slot="{ hover }"
         open-delay="200"
       >
-        <v-card
+      <template>
+                <v-card
           :elevation="hover ? 16 : 2"
           :class="{ 'on-hover': hover }"
           class="mx-auto"
@@ -19,6 +20,8 @@
             Open Delay (Mouse enter)
           </v-card-text>
         </v-card>
+      </template>
+
       </v-hover>
     </v-col>
 
@@ -44,17 +47,23 @@
       </v-hover>
     </v-col>
   </v-row>
+  
 </template>
 
-
 <script>
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib/framework'
+import 'vuetify/dist/vuetify.min.css'
+
+
+Vue.use(Vuetify)
 // import Vue from 'vue'
 // import Vuetify from 'vuetify'
 // import 'vuetify/dist/vuetify.min.css'
 
 // Vue.use(Vuetify)
 
-import * as components from 'vuetify/components'
+//import * as components from 'vuetify/components'
 // import * as directives from 'vuetify/directives'
 export default({
     name: 'ProductInfo',
@@ -66,8 +75,9 @@ export default({
     },
     components:{
         //VueTypeaheadBootstrap
-  components,
+  //components,
   //directives,
+  
         
     },
     mounted(){

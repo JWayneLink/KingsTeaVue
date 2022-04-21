@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import i18n from './i18n/i18n'
 import store from "./store";
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'; // 增加這行，path to vuetify export
+
 
 Vue.prototype.$bus = new Vue();
 Vue.config.productionTip = false

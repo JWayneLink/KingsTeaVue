@@ -1,7 +1,5 @@
 <template>
 <v-container>
-
-
 <div v-for="(c,index) in items" :key="index">    
     <v-row  v-if="index == 0 || index % 3 == 0">
         <v-col cols="2"></v-col>
@@ -13,7 +11,6 @@
                 :src="(`https://avatars.githubusercontent.com/u/${imgRandom}?v=4`)"
                 height="200px"
                 ></v-img> -->
-
                 <img :src="(`https://avatars.githubusercontent.com/u/${Math.floor(Math.random() * 1000)}?v=4`)" class="circular--square">
 
                 <v-card-title class="cyan darken-1">

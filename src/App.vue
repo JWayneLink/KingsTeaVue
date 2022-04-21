@@ -2,6 +2,7 @@
     <div id="app">
     <NavbarSwith></NavbarSwith>
   </div>
+
 </template>
 
 <script>
